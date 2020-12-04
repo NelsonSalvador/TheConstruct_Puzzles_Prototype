@@ -1176,6 +1176,7 @@ MonoBehaviour:
   player: {fileID: 1559816031}
   teleportPoint: {fileID: 230950037}
   renderPlane: {fileID: 187909551}
+  Growth: 0
 --- !u!65 &655628970
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1631,6 +1632,7 @@ MonoBehaviour:
   playerCamera: {fileID: 1014779529}
   portal: {fileID: 187909551}
   otherPortal: {fileID: 1207647601}
+  Growth: 0
 --- !u!20 &947840789
 Camera:
   m_ObjectHideFlags: 0
@@ -2424,6 +2426,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7603930134469144432, guid: d9271e914c7a2fd46bb6ecc1e10f8fd3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 7603930134469144433, guid: d9271e914c7a2fd46bb6ecc1e10f8fd3, type: 3}
       propertyPath: mouseSensitivity
       value: 1500
@@ -2438,7 +2444,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7603930134469144439, guid: d9271e914c7a2fd46bb6ecc1e10f8fd3, type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 4294967295
+      value: 3383
       objectReference: {fileID: 0}
     - target: {fileID: 7603930135721152576, guid: d9271e914c7a2fd46bb6ecc1e10f8fd3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2446,7 +2452,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7603930135721152576, guid: d9271e914c7a2fd46bb6ecc1e10f8fd3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.928
+      value: 0.706
       objectReference: {fileID: 0}
     - target: {fileID: 7603930135721152576, guid: d9271e914c7a2fd46bb6ecc1e10f8fd3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3431,6 +3437,7 @@ MonoBehaviour:
   playerCamera: {fileID: 1014779529}
   portal: {fileID: 720748932}
   otherPortal: {fileID: 1620321577}
+  Growth: 1
 --- !u!20 &1838500554
 Camera:
   m_ObjectHideFlags: 0
@@ -3978,6 +3985,7 @@ MonoBehaviour:
   player: {fileID: 1559816031}
   teleportPoint: {fileID: 1953134995}
   renderPlane: {fileID: 720748932}
+  Growth: 1
 --- !u!65 &2090131669
 BoxCollider:
   m_ObjectHideFlags: 0
