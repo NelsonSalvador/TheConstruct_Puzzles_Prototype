@@ -4386,7 +4386,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7603930134469144433, guid: d9271e914c7a2fd46bb6ecc1e10f8fd3, type: 3}
       propertyPath: mouseSensitivity
-      value: 1500
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 7603930134469144439, guid: d9271e914c7a2fd46bb6ecc1e10f8fd3, type: 3}
       propertyPath: near clip plane

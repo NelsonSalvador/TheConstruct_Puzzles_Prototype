@@ -25,6 +25,21 @@ public class PlayerInteract : MonoBehaviour
     {
         CheckForInteractive();
         CheckForInteraction();
+
+        //Após protótipo, adicionar isto:
+        //Se o timer do diálogo ter acabado
+            // ClearCurrentDialogue();
+
+            //Play waiting_Dialogue in queue se ele existir e ativa timer para impedir que outros diálogos dêm overlap
+            //canvasMng.ShowDialoguePanel(recordedIntDialogue[0])
+            //play audioclip
+            //e apaga-se de forma definitiva o dialógo para que não se repita
+
+            //ou se não existe:
+            //Play waiting_noninteractionDialogue in queue se ele existir e ativa timer para impedir que outros diálogos dêm overlap
+            //canvasMng.ShowDialoguePanel(recordedNIntDialogue[0])
+            //play audioclip
+            //e apaga-se de forma definitiva o dialógo para que não se repita
     }
 
     private void CheckForInteractive()
@@ -33,17 +48,11 @@ public class PlayerInteract : MonoBehaviour
         {
             Interactive interactive = hitInfo.transform.GetComponent<Interactive>();
 
-            //Após protótipo modificar isto de modo a acontecer com um timer (não dependente da posição do jogador, mas sim do diálogo ter acabado)
             if (interactive == null)
                 ClearCurrentInteractive();
-                // Clear waiting_Dialogue
 
             else if (interactive != _currentInteractive)
                 SetCurrentInteractive(interactive);
-
-            //Play waiting_Dialogue in queue se ele existir e nenhum timer está ativo
-            //Se played i in waiting_dialogue também pertence a waiting_noninteractionDialogue ela é retirada da lista;
-            //Play waiting_noninteractionDialogue in queue se ele existir e nenhum timer está ativo
         }
 
         else
@@ -58,35 +67,25 @@ public class PlayerInteract : MonoBehaviour
         {
             _requirementsInInventory = true;
 
-            canvasMng.ShowInteractionPanel(interactive.interactionText);
-            // Aparece diálogo se ele existir relacionado com observar este objeto (quando se preenche os requerimentos) e ativa timer para impedir que outros diálogos dêm overlap
-            // Se algum interactiveDialogue der overlap, o diálogo è adicionado à waiting_Dialogue
-            // Se algum positionDialogue der overlap, o diálogo è adicionado à waiting_Dialogue e à waiting_noninteractionDialogue;
+            canvasMng.ShowInteractionPanel(interactive.GetInteractionText());
 
-            //Se Dialogue:
-            //canvasMng.ShowDialoguePanel(interactive.interactiveDialogue)/canvasMng.ShowDialoguePanel(interactive.positionDialogue);
-            //play audioclip
-            //e apaga-se de forma definitiva o dialógo para que não se repita
+            // Diálogo é adicionado à queue  se ele existir relacionado com observar este objeto (quando se preenche os requerimentos)
+            // Se for interactiveDialogue, o diálogo è adicionado à waiting_Dialogue e o texto à recordedIntDialogue[];
+            // Se for positionDialogue, o diálogo è adicionado à waiting_noninteractionDialogue e o texto à recordedNIntDialogue[];
         }
         else
         {
             _requirementsInInventory = false;
 
             canvasMng.ShowInteractionPanel(interactive.requirementText);
-            // Aparece diálogo se ele existir relacionado com observar este objeto (quando se falha os requerimentos) e ativa timer para impedir que outros diálogos dêm overlap
-            // Se algum interactiveDialogue der overlap, o diálogo è adicionado à waiting_Dialogue
-            // Se algum positionDialogue der overlap, o diálogo è adicionado à waiting_Dialogue e à waiting_noninteractionDialogue;
 
-            //Se Dialogue:
-            //canvasMng.ShowDialoguePanel(interactive.interactiveDialogue)/canvasMng.ShowDialoguePanel(interactive.positionDialogue);
-            //play audioclip
-            //e apaga-se de forma definitiva o dialógo para que não se repita
+            // Diálogo é adicionado à queue se ele existir relacionado com observar este objeto (quando se falha os requerimentos)
+            // Se for interactiveDialogue, o diálogo è adicionado à waiting_Dialogue e o texto à recordedIntDialogue[];
+            // Se for positionDialogue, o diálogo è adicionado à waiting_noninteractionDialogue e o texto à recordedNIntDialogue[];
         }
     }
 
     //Vê se o jogador preenche os requerimentos de interação
-    //Por agora só inclui requerimentos relacionados com inventário
-    //pode vir a ser necessário adicionar outro tipo de requerimentos (por exemplo: ações realizadas no passado)(ou mexer na interaction chain)
     private bool PlayerHasInteractionRequirements()
     {
         //Não existem requerimentos
@@ -102,12 +101,15 @@ public class PlayerInteract : MonoBehaviour
         return true;
     }
 
-    //Faz desaparecer o diálogo e desabilita interação
+    // Desabilita interação e texto
     private void ClearCurrentInteractive()
     {
         _currentInteractive = null;
         canvasMng.HideInteractionPanel();
     }
+
+    //Faz desaparecer o diálogo
+    // private void ClearCurrentDialogue()
 
     //Verifica interação
     private void CheckForInteraction()
@@ -123,9 +125,17 @@ public class PlayerInteract : MonoBehaviour
         }
     }
 
-    //Desativa objeto
+    //Desativa objeto e adiciona-o ao inventário
     private void PickCurrentInteractive()
     {
+        //Iman que puxa blocos (e futuros items que se ativam ao serem picked up)
+        if(_currentInteractive.useOnPickup)
+            _currentInteractive.Activate();
+            //se não funcionar trocar activate por interact e fazer activationchain com um outro objeto que os blocos vão utilizar para procurar confirmação
+
+            //O _currentInteractive.interactionDialogue è adicionado à waiting_Dialogue e o _currentInteractive.interactionDialogueText à recordedIntDialogue[];
+            //Se for necessário um diálogo para a activation e interaction de um mesmo objeto, pode se adicionar activationDialogue ao script interactive.cs e mudar l135
+
         _currentInteractive.gameObject.SetActive(false);
         AddToInventory(_currentInteractive);
     }
@@ -133,11 +143,24 @@ public class PlayerInteract : MonoBehaviour
     //Interage com o objeto e remove os items do inventário se a interação os consome
     private void InteractWithCurrentInteractive()
     {
-        if(_currentInteractive.consumesItem == true)
-            for (int i = 0; i < _currentInteractive.requirements.Length; ++i)
-                RemoveFromInventory(_currentInteractive.requirements[i]);
+        for (int i = 0; i < _currentInteractive.requirements.Length; ++i)
+        {
+            Interactive currentRequirement = _currentInteractive.requirements[i];
+            currentRequirement.gameObject.SetActive(true);
+            currentRequirement.Interact();
+
+            //Se interactionDialogue:
+            //O _currentInteractive.interactionDialogue è adicionado à waiting_Dialogue e o _currentInteractive.interactionDialogueText à recordedIntDialogue[];
+
+            if(_currentInteractive.consumesItem == true)
+                RemoveFromInventory(currentRequirement);
+        }
 
         _currentInteractive.Interact();
+        //Se interactionDialogue:
+        //O _currentInteractive.interactionDialogue è adicionado à waiting_Dialogue e o _currentInteractive.interactionDialogueText à recordedIntDialogue[];
+
+        ClearCurrentInteractive();
     }
 
     //Adiciona objeto ao inventário e atribui-lhe um icon
