@@ -2245,9 +2245,23 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 637737088}
     m_Modifications:
-    - target: {fileID: 1547116696582102, guid: f750d5f061e724f4c827ab6b376e2550, type: 3}
-      propertyPath: m_Name
-      value: SM_Prop_Barrel_01
+
+    - target: {fileID: 7603930134469144433, guid: d9271e914c7a2fd46bb6ecc1e10f8fd3, type: 3}
+      propertyPath: mouseSensitivity
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 7603930134469144439, guid: d9271e914c7a2fd46bb6ecc1e10f8fd3, type: 3}
+      propertyPath: near clip plane
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7603930134469144439, guid: d9271e914c7a2fd46bb6ecc1e10f8fd3, type: 3}
+      propertyPath: field of view
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 7603930134469144439, guid: d9271e914c7a2fd46bb6ecc1e10f8fd3, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4294967295
+
       objectReference: {fileID: 0}
     - target: {fileID: 4483658618797090, guid: f750d5f061e724f4c827ab6b376e2550, type: 3}
       propertyPath: m_LocalPosition.x
