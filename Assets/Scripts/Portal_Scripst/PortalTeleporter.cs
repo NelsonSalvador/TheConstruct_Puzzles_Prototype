@@ -9,8 +9,6 @@ public class PortalTeleporter : MonoBehaviour
 
     public Transform renderPlane;
 
-    private int playerSize;
-
     public bool Growth = true;
 
     private bool playerIsOverlapping = false;
@@ -25,11 +23,11 @@ public class PortalTeleporter : MonoBehaviour
 
             float dotProduct = Vector3.Dot(transform.up, portalToPlayer);
 
-            if(dotProduct < 0f)
+            if (dotProduct < 0f)
             {
                 CharacterController cc = player.GetComponent<CharacterController>();
                 cc.enabled = false;
-                
+
                 float rotationDiff = -Quaternion.Angle(transform.rotation, teleportPoint.rotation);
                 Debug.Log(rotationDiff);
                 //rotationDiff += 180;
@@ -37,20 +35,18 @@ public class PortalTeleporter : MonoBehaviour
 
                 Vector3 positionOffset = Quaternion.Euler(0f, rotationDiff, 0f) * portalToPlayer;
 
-                Vector3 portalOffsets = new Vector3 (transform.position.x - renderPlane.position.x, 0, 0);
-                
+                Vector3 portalOffsets = new Vector3(transform.position.x - renderPlane.position.x, 0, 0);
 
-                if(Growth)
+
+                if (Growth)
                 {
                     player.transform.localScale = player.transform.localScale + new Vector3(0, player.localScale.y, 0);
-                    player.position = teleportPoint.position + positionOffset + portalOffsets;
-                    player.GetComponent<PlayerInteract>().playerSize += 1;
+                    player.position = teleportPoint.position + positionOffset + portalOffsets + new Vector3(0, player.localScale.y / 2, 0);
                 }
                 else
                 {
-                    player.transform.localScale = player.transform.localScale - new Vector3(0, player.localScale.y/2, 0);
-                    player.position = teleportPoint.position + positionOffset + portalOffsets;
-                    player.GetComponent<PlayerInteract>().playerSize -= 1;
+                    player.transform.localScale = player.transform.localScale - new Vector3(0, player.localScale.y / 2, 0);
+                    player.position = teleportPoint.position + positionOffset + portalOffsets - new Vector3(0, player.localScale.y / 2, 0);
                 }
 
                 cc.enabled = true;
@@ -58,10 +54,9 @@ public class PortalTeleporter : MonoBehaviour
             }
         }
     }
-
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if (other.tag == "Player")
         {
             playerIsOverlapping = true;
         }

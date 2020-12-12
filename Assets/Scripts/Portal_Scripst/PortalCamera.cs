@@ -20,9 +20,9 @@ public class PortalCamera : MonoBehaviour
         }
         else
         {
-            transform.position = otherPortal.position + playerOffset - new Vector3(0, playerCamera.transform.position.y/2, 0);
+            transform.position = otherPortal.position + playerOffset - new Vector3(0, playerCamera.transform.position.y / 2, 0);
         }
-        
+
 
         float angularDiff = Quaternion.Angle(portal.rotation, otherPortal.rotation);
 
