@@ -9,6 +9,8 @@ public class PortalTeleporter : MonoBehaviour
 
     public Transform renderPlane;
 
+    private int playerSize;
+
     public bool Growth = true;
 
     private bool playerIsOverlapping = false;
@@ -40,14 +42,15 @@ public class PortalTeleporter : MonoBehaviour
 
                 if(Growth)
                 {
-                    player.position = teleportPoint.position + positionOffset + portalOffsets + player.transform.localScale;
                     player.transform.localScale = player.transform.localScale + new Vector3(0, player.localScale.y, 0);
-                    
+                    player.position = teleportPoint.position + positionOffset + portalOffsets;
+                    player.GetComponent<PlayerInteract>().playerSize += 1;
                 }
                 else
                 {
                     player.transform.localScale = player.transform.localScale - new Vector3(0, player.localScale.y/2, 0);
                     player.position = teleportPoint.position + positionOffset + portalOffsets;
+                    player.GetComponent<PlayerInteract>().playerSize -= 1;
                 }
 
                 cc.enabled = true;

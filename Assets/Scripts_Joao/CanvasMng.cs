@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class CanvasManager : MonoBehaviour
+public class CanvasMng : MonoBehaviour
 {
     public GameObject   interactionPanel;
     public GameObject   dialoguePanel;

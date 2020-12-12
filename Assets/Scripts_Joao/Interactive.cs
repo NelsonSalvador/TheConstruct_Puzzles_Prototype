@@ -9,6 +9,8 @@ public class Interactive : MonoBehaviour
     public bool            consumesItem;
     public bool            useOnPickup;
     public string[]          interactionTexts;
+    public int requirementForSize = 0;
+
     //public audio         interactiveDialogue;
     //public audio         interactionDialogue;
     //public string        interactiveDialogueText;
@@ -23,16 +25,16 @@ public class Interactive : MonoBehaviour
     public Interactive[]   interactionChain;
     public Texture         icon;
     public Interactive[]   requirements;
+    public int       limitedItems;
     private int      _curInteractionTextId;
     private Animator _anim;
 
+    private int playerSize;
     void Start()
     {
         _anim = GetComponent<Animator>();
         _curInteractionTextId   = 0;
-        multiPickable = false;
-        consumesItem = false;
-        useOnPickup = false;
+        
     }
 
     public string GetInteractionText()
@@ -60,8 +62,13 @@ public class Interactive : MonoBehaviour
 
     public void Interact()
     {
+        playerSize = FindObjectOfType<Player>().GetComponent<PlayerInteract>().playerSize;
         if (_anim != null)
+        {
             _anim.SetTrigger("Interact");
+            _anim.SetInteger("Size", playerSize);
+        }
+
 
         if (isActive)
         {
@@ -79,7 +86,7 @@ public class Interactive : MonoBehaviour
     {
         if (interactionChain != null)
         {
-            for (int i = 0; i > interactionChain.Length; ++i)
+            for (int i = 0; i < interactionChain.Length; ++i)
                 interactionChain[i].Interact();
         }
     }

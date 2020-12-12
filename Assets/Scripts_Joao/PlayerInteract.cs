@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerInteract : MonoBehaviour
 {
     private const float MAX_INTERACTION_DISTANCE = 1.5f;
-    public CanvasManager canvasMng;
+    public CanvasMng canvasMng;
 
     private Transform           _cameraTransform;
     private Interactive         _currentInteractive;
@@ -13,6 +13,9 @@ public class PlayerInteract : MonoBehaviour
     //private List<Interactive> waiting_noninteractionDialogue;
     private bool                _requirementsInInventory;
     private List<Interactive>   _inventory;
+
+    [HideInInspector]
+    public int playerSize = 0;
 
     void Start()
     {
@@ -25,6 +28,7 @@ public class PlayerInteract : MonoBehaviour
     {
         CheckForInteractive();
         CheckForInteraction();
+        playerSize = FindObjectOfType<Player>().GetComponent<PlayerInteract>().playerSize;
 
         //Após protótipo, adicionar isto:
         //Se o timer do diálogo ter acabado
@@ -93,9 +97,11 @@ public class PlayerInteract : MonoBehaviour
             return true;
 
         //Existe requerimentos que o jogador não preenche
-        for (int i = 0; i < _currentInteractive.requirements.Length; ++i)
-            if (!IsInInventory(_currentInteractive.requirements[i]))
+        for (int i = 0; i < (_currentInteractive.limitedItems > 0 ? _currentInteractive.limitedItems : _currentInteractive.requirements.Length); ++i)
+        {
+            if (!IsInInventory(_currentInteractive.requirements[i]) && !IsInInventory(_currentInteractive.requirements[i +1]))
                 return false;
+        }
 
         //Ele preenche os requerimentos
         return true;
@@ -120,8 +126,11 @@ public class PlayerInteract : MonoBehaviour
                 PickCurrentInteractive();
             //else if (_currentInteractive.type == Interactive.InteractiveType.PositionDialogue)
                 //continue
-            else if (_requirementsInInventory)
+            else if (_currentInteractive.requirementForSize != 0 && _currentInteractive.requirementForSize == playerSize && _requirementsInInventory)
                 InteractWithCurrentInteractive();
+            else if (_requirementsInInventory && _currentInteractive.requirementForSize == 0)
+                InteractWithCurrentInteractive();
+                
         }
     }
 
@@ -143,17 +152,25 @@ public class PlayerInteract : MonoBehaviour
     //Interage com o objeto e remove os items do inventário se a interação os consome
     private void InteractWithCurrentInteractive()
     {
-        for (int i = 0; i < _currentInteractive.requirements.Length; ++i)
+
+        for (int i = 0; i < (_currentInteractive.limitedItems > 0 ? _currentInteractive.limitedItems : _currentInteractive.requirements.Length); ++i)
         {
-            Interactive currentRequirement = _currentInteractive.requirements[i];
+            Interactive currentRequirement;
+            if (IsInInventory(_currentInteractive.requirements[i]))
+                currentRequirement = _currentInteractive.requirements[i];
+            else
+                currentRequirement = _currentInteractive.requirements[i + 1];
+
             currentRequirement.gameObject.SetActive(true);
             currentRequirement.Interact();
 
             //Se interactionDialogue:
             //O _currentInteractive.interactionDialogue è adicionado à waiting_Dialogue e o _currentInteractive.interactionDialogueText à recordedIntDialogue[];
 
-            if(_currentInteractive.consumesItem == true)
+            if (currentRequirement.consumesItem == true)
+            {
                 RemoveFromInventory(currentRequirement);
+            }
         }
 
         _currentInteractive.Interact();
