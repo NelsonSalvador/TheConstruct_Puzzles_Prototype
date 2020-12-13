@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-
 public class PlayerInteract : MonoBehaviour
 {
     private const float MAX_INTERACTION_DISTANCE = 1.5f;
@@ -13,6 +12,9 @@ public class PlayerInteract : MonoBehaviour
     //private List<Interactive> waiting_noninteractionDialogue;
     private bool                _requirementsInInventory;
     private List<Interactive>   _inventory;
+    private int                 scrollSlot = 1;
+    private int                 scrollAux = 0;
+    private bool                added;
 
     [HideInInspector]
     public int playerSize = 0;
@@ -27,7 +29,9 @@ public class PlayerInteract : MonoBehaviour
     void Update()
     {
         CheckForInteractive();
+        CheckForScroll(0);
         CheckForInteraction();
+        playerSize = FindObjectOfType<Player>().GetComponent<PlayerInteract>().playerSize;
 
         //Após protótipo, adicionar isto:
         //Se o timer do diálogo ter acabado
@@ -113,6 +117,38 @@ public class PlayerInteract : MonoBehaviour
         canvasMng.HideInteractionPanel();
     }
 
+    private void CheckForScroll(int inventoryChange)
+    {
+        if (Input.GetAxis("Mouse ScrollWheel") > 0f || inventoryChange == 1)
+        {
+            if(_inventory.Count == 0)
+            {
+                scrollAux  = 0;
+                scrollSlot = 0;
+            }
+            else
+            {
+                scrollAux += 1;
+                scrollSlot = Mathf.Abs(scrollAux % _inventory.Count);
+                SelectInInventory();
+            }
+        }
+        if (Input.GetAxis("Mouse ScrollWheel") < 0f || inventoryChange == 2)
+        {
+            if(_inventory.Count == 0)
+            {
+                scrollAux  = 0;
+                scrollSlot = 0;
+            }
+            else
+            {
+                scrollAux -= 1;
+                scrollSlot = Mathf.Abs(scrollAux % _inventory.Count);
+                SelectInInventory();
+            }
+        }
+    }
+
     //Faz desaparecer o diálogo
     // private void ClearCurrentDialogue()
 
@@ -129,7 +165,6 @@ public class PlayerInteract : MonoBehaviour
                 InteractWithCurrentInteractive();
             else if (_requirementsInInventory && _currentInteractive.requirementForSize == 0)
                 InteractWithCurrentInteractive();
-                
         }
     }
 
@@ -137,7 +172,7 @@ public class PlayerInteract : MonoBehaviour
     private void PickCurrentInteractive()
     {
         //Iman que puxa blocos (e futuros items que se ativam ao serem picked up)
-        if(_currentInteractive.useOnPickup)
+        if(_currentInteractive.useWhenPicked)
             _currentInteractive.Activate();
             //se não funcionar trocar activate por interact e fazer activationchain com um outro objeto que os blocos vão utilizar para procurar confirmação
 
@@ -156,11 +191,20 @@ public class PlayerInteract : MonoBehaviour
         {
             Interactive currentRequirement;
             if (IsInInventory(_currentInteractive.requirements[i]))
+            {
                 currentRequirement = _currentInteractive.requirements[i];
-            else
-                currentRequirement = _currentInteractive.requirements[i + 1];
+            }
 
-            currentRequirement.gameObject.SetActive(true);
+            else
+            {
+                currentRequirement = _currentInteractive.requirements[i + 1];
+            }
+
+            if (currentRequirement.usedOnAnimation == true)
+            {
+                currentRequirement.gameObject.SetActive(true);
+            }
+
             currentRequirement.Interact();
 
             //Se interactionDialogue:
@@ -184,6 +228,7 @@ public class PlayerInteract : MonoBehaviour
     {
         _inventory.Add(item);
         canvasMng.SetInventoryIcon(_inventory.Count - 1, item.icon);
+        CheckForScroll(1);
     }
 
     //Remove objeto e o seu icon do inventário
@@ -195,12 +240,19 @@ public class PlayerInteract : MonoBehaviour
 
         for (int i = 0; i < _inventory.Count; ++i)
             canvasMng.SetInventoryIcon(i, _inventory[i].icon);
+
+        CheckForScroll(2);
     }
 
     //Vê se objeto está no inventário
     private bool IsInInventory(Interactive item)
     {
         return _inventory.Contains(item);
+    }
+
+    private void SelectInInventory()
+    {
+        canvasMng.SetSelectedIcon(scrollSlot, _inventory.Count);
     }
 
 }

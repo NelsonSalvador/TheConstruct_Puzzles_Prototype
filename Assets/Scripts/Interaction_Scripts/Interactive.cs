@@ -6,10 +6,11 @@ public class Interactive : MonoBehaviour
     public InteractiveType type;
     public bool             isActive;
     public bool             multiPickable;
-    public bool            consumesItem;
-    public bool            useOnPickup;
-    public string[]          interactionTexts;
-    public int requirementForSize = 0;
+    public bool             consumesItem;
+    public bool             usedOnAnimation;
+    public bool             useWhenPicked;
+    public string[]         interactionTexts;
+    public int              requirementForSize = 0;
 
     //public audio         interactiveDialogue;
     //public audio         interactionDialogue;
@@ -34,7 +35,6 @@ public class Interactive : MonoBehaviour
     {
         _anim = GetComponent<Animator>();
         _curInteractionTextId   = 0;
-        
     }
 
     public string GetInteractionText()

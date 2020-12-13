@@ -44,8 +44,16 @@ public class CanvasMng : MonoBehaviour
     public void SetInventoryIcon(int i, Texture icon)
     {
         inventoryIcons[i].texture   = icon;
-        inventoryIcons[i].color     = Color.white;
+        inventoryIcons[i].color     = Color.gray;
     }
+
+    public void SetSelectedIcon(int n, int inventoryCount)
+    {
+        for (int i = 0; i < inventoryCount; ++i)
+            inventoryIcons[i].color = Color.gray;
+        inventoryIcons[n].color = Color.white;
+    }
+
 
     //Apaga os icons para objetos no inventário (para não ficar lá imagem quando se apaga um objeto)
     public void ClearInventoryIcons()
