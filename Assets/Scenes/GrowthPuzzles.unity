@@ -343,7 +343,8 @@ MonoBehaviour:
   isActive: 1
   multiPickable: 0
   consumesItem: 0
-  useOnPickup: 0
+  usedOnAnimation: 0
+  useWhenPicked: 0
   interactionTexts:
   - PutBox Here
   requirementForSize: -1
@@ -639,7 +640,8 @@ MonoBehaviour:
   isActive: 1
   multiPickable: 0
   consumesItem: 0
-  useOnPickup: 0
+  usedOnAnimation: 0
+  useWhenPicked: 0
   interactionTexts: []
   requirementForSize: 0
   requirementText: 
@@ -1732,7 +1734,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4957478770538164, guid: 46e18d94e2668c5479029197e6379a8e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.386
+      value: 9.412
       objectReference: {fileID: 0}
     - target: {fileID: 4957478770538164, guid: 46e18d94e2668c5479029197e6379a8e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2533,7 +2535,8 @@ MonoBehaviour:
   isActive: 1
   multiPickable: 0
   consumesItem: 1
-  useOnPickup: 0
+  usedOnAnimation: 0
+  useWhenPicked: 0
   interactionTexts:
   - E to PickUp Box
   requirementForSize: 0
@@ -2607,7 +2610,8 @@ MonoBehaviour:
   isActive: 1
   multiPickable: 0
   consumesItem: 0
-  useOnPickup: 0
+  usedOnAnimation: 0
+  useWhenPicked: 0
   interactionTexts: []
   requirementForSize: 0
   requirementText: 
@@ -5695,7 +5699,8 @@ MonoBehaviour:
   isActive: 1
   multiPickable: 0
   consumesItem: 0
-  useOnPickup: 0
+  usedOnAnimation: 0
+  useWhenPicked: 0
   interactionTexts:
   - PutBox Here
   requirementForSize: 1
@@ -6712,7 +6717,8 @@ MonoBehaviour:
   isActive: 1
   multiPickable: 0
   consumesItem: 0
-  useOnPickup: 0
+  usedOnAnimation: 0
+  useWhenPicked: 0
   interactionTexts: []
   requirementForSize: 0
   requirementText: 
@@ -7425,7 +7431,8 @@ MonoBehaviour:
   isActive: 1
   multiPickable: 0
   consumesItem: 0
-  useOnPickup: 0
+  usedOnAnimation: 0
+  useWhenPicked: 0
   interactionTexts:
   - Push Button
   requirementForSize: 0
@@ -8649,7 +8656,8 @@ MonoBehaviour:
   isActive: 1
   multiPickable: 0
   consumesItem: 0
-  useOnPickup: 0
+  usedOnAnimation: 0
+  useWhenPicked: 0
   interactionTexts: []
   requirementForSize: 0
   requirementText: 
@@ -8844,7 +8852,8 @@ MonoBehaviour:
   isActive: 1
   multiPickable: 0
   consumesItem: 1
-  useOnPickup: 0
+  usedOnAnimation: 0
+  useWhenPicked: 0
   interactionTexts:
   - E to PickUp Box
   requirementForSize: 0
@@ -8962,7 +8971,8 @@ MonoBehaviour:
   isActive: 1
   multiPickable: 0
   consumesItem: 1
-  useOnPickup: 0
+  usedOnAnimation: 0
+  useWhenPicked: 0
   interactionTexts:
   - E to PickUp Box
   requirementForSize: 0
