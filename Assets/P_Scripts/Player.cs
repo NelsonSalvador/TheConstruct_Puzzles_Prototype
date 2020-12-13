@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     private Vector3 _velocity;
     private bool _jump;
     private bool _sprint;
-
+    
     void Start()
     {
         _controller = GetComponent<CharacterController>();
