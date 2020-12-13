@@ -28,7 +28,6 @@ public class PlayerInteract : MonoBehaviour
     {
         CheckForInteractive();
         CheckForInteraction();
-        playerSize = FindObjectOfType<Player>().GetComponent<PlayerInteract>().playerSize;
 
         //Após protótipo, adicionar isto:
         //Se o timer do diálogo ter acabado

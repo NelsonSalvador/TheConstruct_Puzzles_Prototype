@@ -9,18 +9,28 @@ public class PortalCamera : MonoBehaviour
     public Transform otherPortal;
 
     public bool Growth = false;
+    private PlayerInteract player;
+
+    void Start()
+    {
+        player = FindObjectOfType<Player>().GetComponent<PlayerInteract>();    
+    }
 
     // Update is called once per frame
     void Update()
     {
         Vector3 playerOffset = playerCamera.position - portal.position;
-        if (Growth)
+        if (Growth && (player.playerSize == -1 || player.playerSize == 0))
         {
             transform.position = otherPortal.position + playerOffset + new Vector3(0, playerCamera.transform.position.y, 0);
         }
-        else
+        else if (!Growth && (player.playerSize == 1 || player.playerSize == 0))
         {
             transform.position = otherPortal.position + playerOffset - new Vector3(0, playerCamera.transform.position.y / 2, 0);
+        }
+        else
+        {
+            transform.position = otherPortal.position + playerOffset;
         }
 
 
