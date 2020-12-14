@@ -9,6 +9,7 @@ public class Interactive : MonoBehaviour
     public bool             consumesItem;
     public bool             usedOnAnimation;
     public bool             useWhenPicked;
+    public bool             interactWhenPicked;
     public bool             orderedUsage;
     public bool             limitedItemUsageAtOnce;
     public string[]         interactionTexts;
