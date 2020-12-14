@@ -47,12 +47,15 @@ public class StairTrigger : MonoBehaviour
         }
 
 
-        if (Physics.Raycast(this.gameObject.GetComponent<Renderer>().bounds.center, transform.TransformDirection(Vector3.forward), out alongZ, 1f) && !_isRunning)
+        if ((Physics.Raycast(this.gameObject.GetComponent<Renderer>().bounds.center, transform.TransformDirection(Vector3.forward), out alongZ, 1f) && !_isRunning) ||
+            (Physics.Raycast(this.gameObject.GetComponent<Renderer>().bounds.center + new Vector3(0.65f, 0, 0) , transform.TransformDirection(Vector3.forward), out alongZ, 1f) && !_isRunning) ||
+            (Physics.Raycast(this.gameObject.GetComponent<Renderer>().bounds.center + new Vector3(-0.65f, 0, 0), transform.TransformDirection(Vector3.forward), out alongZ, 1f) && !_isRunning))
         {
             
             CharacterController player = alongZ.collider as CharacterController;
             if (player != null)
             {
+                Debug.Log("Entrou azul");
                 if (_isX)
                 {
                     angle = Vector3.Angle(transform.TransformDirection(Vector3.forward), _pivot.transform.TransformDirection(Vector3.forward));
@@ -65,22 +68,25 @@ public class StairTrigger : MonoBehaviour
                 else
                 {
                     angle = Vector3.Angle(transform.TransformDirection(Vector3.forward), _pivot.transform.TransformDirection(Vector3.right));
-                    Debug.Log(angle);
                     if (179 < angle && angle < 181)
                         _direction = 1;
                     else
                         _direction = -1;
                 }
-                
+                Debug.Log(_direction);
             }
-            
+           
+
         }
-        else if (Physics.Raycast(this.gameObject.GetComponent<Renderer>().bounds.center, transform.TransformDirection(Vector3.up), out alongX, 1f) && !_isRunning)
+        else if ((Physics.Raycast(this.gameObject.GetComponent<Renderer>().bounds.center, transform.TransformDirection(Vector3.up), out alongX, 1f) && !_isRunning) ||
+                 (Physics.Raycast(this.gameObject.GetComponent<Renderer>().bounds.center + new Vector3(0.65f, 0, 0), transform.TransformDirection(Vector3.up), out alongX, 1f) && !_isRunning) ||
+                 (Physics.Raycast(this.gameObject.GetComponent<Renderer>().bounds.center + new Vector3(-0.65f, 0, 0), transform.TransformDirection(Vector3.up), out alongX, 1f) && !_isRunning))
         {
-             
+           
             CharacterController player = alongX.collider as CharacterController;
             if (player != null)
             {
+                Debug.Log("Entrou verde");
                 if (_isX)
                 {
                     angle = Vector3.Angle(transform.TransformDirection(Vector3.up), _pivot.transform.TransformDirection(Vector3.forward));
@@ -99,12 +105,18 @@ public class StairTrigger : MonoBehaviour
                     else
                         _direction = -1;
                 }
-            } 
+                Debug.Log(_direction);
+            }
 
-
+           
         }
         Debug.DrawRay(this.gameObject.GetComponent<Renderer>().bounds.center, transform.TransformDirection(Vector3.up), Color.green);
+        Debug.DrawRay(this.gameObject.GetComponent<Renderer>().bounds.center + new Vector3(0.65f, 0, 0), transform.TransformDirection(Vector3.up), Color.green);
+        Debug.DrawRay(this.gameObject.GetComponent<Renderer>().bounds.center + new Vector3(-0.65f, 0, 0), transform.TransformDirection(Vector3.up), Color.green);
+
         Debug.DrawRay(this.gameObject.GetComponent<Renderer>().bounds.center, transform.TransformDirection(Vector3.forward), Color.blue);
+        Debug.DrawRay(this.gameObject.GetComponent<Renderer>().bounds.center + new Vector3(0.65f, 0, 0), transform.TransformDirection(Vector3.forward), Color.blue);
+        Debug.DrawRay(this.gameObject.GetComponent<Renderer>().bounds.center + new Vector3(-0.65f, 0, 0), transform.TransformDirection(Vector3.forward), Color.blue);
     }
 
     private IEnumerator Wait()
