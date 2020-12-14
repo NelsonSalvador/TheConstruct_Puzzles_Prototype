@@ -2,15 +2,18 @@
 
 public class Interactive : MonoBehaviour
 {
-    public enum InteractiveType {Pickable, One_Use, Multi_Uses, Indirect};
+    public enum InteractiveType {Pickable, Direct, Indirect};
     public InteractiveType type;
     public bool             isActive;
-    public bool             multiPickable;
+    //public bool             multiPickable;
     public bool             consumesItem;
     public bool             usedOnAnimation;
     public bool             useWhenPicked;
+    public bool             orderedUsage;
+    public bool             limitedItemUsageAtOnce;
     public string[]         interactionTexts;
     public int              requirementForSize = 0;
+    public int              maximumUses;
 
     //public audio         interactiveDialogue;
     //public audio         interactionDialogue;
@@ -22,15 +25,20 @@ public class Interactive : MonoBehaviour
     //public bool          playedInteractionDialogue;
     //public bool          playedPositionDialogue;
     public string          requirementText;
-    public Interactive[]    activationChain;
+
+    private int            playerSize;
+    private int            _curInteractionTextId;
+
+    [HideInInspector]
+    public int             numberOfUses = 0;
+
+    public Interactive[]   activationChain;
     public Interactive[]   interactionChain;
     public Texture         icon;
     public Interactive[]   requirements;
-    public int       limitedItems;
-    private int      _curInteractionTextId;
-    private Animator _anim;
 
-    private int playerSize;
+    private Animator        _anim;
+
     void Start()
     {
         _anim = GetComponent<Animator>();
@@ -69,15 +77,16 @@ public class Interactive : MonoBehaviour
             _anim.SetInteger("Size", playerSize);
         }
 
-
         if (isActive)
         {
             ProcessActivationChain();
             ProcessInteractionChain();
 
-            if (type == InteractiveType.One_Use || type == InteractiveType.Pickable)
-                GetComponent<Collider>().enabled = false;
-            else if (type == InteractiveType.One_Use)
+            numberOfUses += 1;
+
+            if (maximumUses == numberOfUses || type == InteractiveType.Pickable)
+                GetComponent<BoxCollider>().enabled = false;
+            else if ((maximumUses != numberOfUses) && (interactionTexts.Length != 0))
                 _curInteractionTextId = (_curInteractionTextId + 1) % interactionTexts.Length;
         }
     }
