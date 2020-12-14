@@ -7,6 +7,7 @@ public class PlayerInteract : MonoBehaviour
 
     private Transform           _cameraTransform;
     private Interactive         _currentInteractive;
+    private Interactive         currentRequirement;
     //private Dialogue          dialogue;
     //private List<Interactive> waiting_Dialogue;
     //private List<Interactive> waiting_noninteractionDialogue;
@@ -95,19 +96,40 @@ public class PlayerInteract : MonoBehaviour
     //Vê se o jogador preenche os requerimentos de interação
     private bool PlayerHasInteractionRequirements()
     {
-        //Não existem requerimentos
         if (_currentInteractive.requirements == null)
-            return true;
-
-        //Existe requerimentos que o jogador não preenche
-        for (int i = 0; i < (_currentInteractive.limitedItems > 0 ? _currentInteractive.limitedItems : _currentInteractive.requirements.Length); ++i)
         {
-            if (!IsInInventory(_currentInteractive.requirements[i]) && !IsInInventory(_currentInteractive.requirements[i +1]))
-                return false;
+            return true;
         }
 
-        //Ele preenche os requerimentos
-        return true;
+        if (_currentInteractive.orderedUsage && IsInInventory(_currentInteractive.requirements[_currentInteractive.numberOfUses]) && _currentInteractive.limitedItemUsageAtOnce)
+        {
+            return true;
+        }
+        else if (_currentInteractive.orderedUsage && !IsInInventory(_currentInteractive.requirements[_currentInteractive.numberOfUses]))
+        {
+            return false;
+        }
+
+        for (int i = 0; i < _currentInteractive.requirements.Length; ++i)
+        {
+            if (!IsInInventory(_currentInteractive.requirements[i]) && !_currentInteractive.limitedItemUsageAtOnce)
+            {
+                return false;
+            }
+            else if (_currentInteractive.limitedItemUsageAtOnce && IsInInventory(_currentInteractive.requirements[i]))
+            {
+                return true;
+            }
+        }
+
+        if (_currentInteractive.limitedItemUsageAtOnce)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
     // Desabilita interação e texto
@@ -187,18 +209,9 @@ public class PlayerInteract : MonoBehaviour
     private void InteractWithCurrentInteractive()
     {
 
-        for (int i = 0; i < (_currentInteractive.limitedItems > 0 ? _currentInteractive.limitedItems : _currentInteractive.requirements.Length); ++i)
+        if (_currentInteractive.orderedUsage && IsInInventory(_currentInteractive.requirements[_currentInteractive.numberOfUses]) && _currentInteractive.limitedItemUsageAtOnce)
         {
-            Interactive currentRequirement;
-            if (IsInInventory(_currentInteractive.requirements[i]))
-            {
-                currentRequirement = _currentInteractive.requirements[i];
-            }
-
-            else
-            {
-                currentRequirement = _currentInteractive.requirements[i + 1];
-            }
+            currentRequirement = _currentInteractive.requirements[_currentInteractive.numberOfUses];
 
             if (currentRequirement.usedOnAnimation == true)
             {
@@ -207,13 +220,57 @@ public class PlayerInteract : MonoBehaviour
 
             currentRequirement.Interact();
 
-            //Se interactionDialogue:
-            //O _currentInteractive.interactionDialogue è adicionado à waiting_Dialogue e o _currentInteractive.interactionDialogueText à recordedIntDialogue[];
-
             if (currentRequirement.consumesItem == true)
             {
                 RemoveFromInventory(currentRequirement);
             }
+
+            _currentInteractive.Interact();
+
+            ClearCurrentInteractive();
+            return;
+        }
+
+        for (int i = 0; i < _currentInteractive.requirements.Length; ++i)
+        {
+            if (IsInInventory(_currentInteractive.requirements[i]) && _currentInteractive.limitedItemUsageAtOnce)
+            {
+                currentRequirement = _currentInteractive.requirements[i];
+
+                if (currentRequirement.usedOnAnimation == true)
+                {
+                    currentRequirement.gameObject.SetActive(true);
+                }
+
+                currentRequirement.Interact();
+
+                if (currentRequirement.consumesItem == true)
+                {
+                    RemoveFromInventory(currentRequirement);
+                }
+
+                break;
+            }
+
+            if (IsInInventory(_currentInteractive.requirements[i]) && !_currentInteractive.limitedItemUsageAtOnce)
+            {
+                currentRequirement = _currentInteractive.requirements[i];
+
+                if (currentRequirement.usedOnAnimation == true)
+                {
+                    currentRequirement.gameObject.SetActive(true);
+                }
+
+                currentRequirement.Interact();
+
+                if (currentRequirement.consumesItem == true)
+                {
+                    RemoveFromInventory(currentRequirement);
+                }
+            }
+
+            //Se interactionDialogue:
+            //O _currentInteractive.interactionDialogue è adicionado à waiting_Dialogue e o _currentInteractive.interactionDialogueText à recordedIntDialogue[];
         }
 
         _currentInteractive.Interact();

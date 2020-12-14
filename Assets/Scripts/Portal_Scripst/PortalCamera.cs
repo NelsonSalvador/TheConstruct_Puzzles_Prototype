@@ -9,6 +9,7 @@ public class PortalCamera : MonoBehaviour
     public Transform otherPortal;
 
     public bool Growth = false;
+    public bool normal = false;
     private PlayerInteract player;
 
     void Start()
@@ -20,7 +21,11 @@ public class PortalCamera : MonoBehaviour
     void Update()
     {
         Vector3 playerOffset = playerCamera.position - portal.position;
-        if (Growth && (player.playerSize == -1 || player.playerSize == 0))
+        if (normal)
+        {
+            transform.position = otherPortal.position + playerOffset;
+        }
+        else if (Growth && (player.playerSize == -1 || player.playerSize == 0))
         {
             transform.position = otherPortal.position + playerOffset + new Vector3(0, playerCamera.transform.position.y, 0);
         }
@@ -32,6 +37,8 @@ public class PortalCamera : MonoBehaviour
         {
             transform.position = otherPortal.position + playerOffset;
         }
+
+        
 
 
         float angularDiff = Quaternion.Angle(portal.rotation, otherPortal.rotation);
