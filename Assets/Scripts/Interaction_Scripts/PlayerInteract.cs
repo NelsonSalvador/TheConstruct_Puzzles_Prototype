@@ -197,7 +197,8 @@ public class PlayerInteract : MonoBehaviour
         if(_currentInteractive.useWhenPicked)
             _currentInteractive.Activate();
             //se não funcionar trocar activate por interact e fazer activationchain com um outro objeto que os blocos vão utilizar para procurar confirmação
-
+        if(_currentInteractive.interactWhenPicked)
+            _currentInteractive.Interact();
             //O _currentInteractive.interactionDialogue è adicionado à waiting_Dialogue e o _currentInteractive.interactionDialogueText à recordedIntDialogue[];
             //Se for necessário um diálogo para a activation e interaction de um mesmo objeto, pode se adicionar activationDialogue ao script interactive.cs e mudar l135
 
@@ -209,7 +210,7 @@ public class PlayerInteract : MonoBehaviour
     private void InteractWithCurrentInteractive()
     {
 
-        if (_currentInteractive.orderedUsage && IsInInventory(_currentInteractive.requirements[_currentInteractive.numberOfUses]) && _currentInteractive.limitedItemUsageAtOnce)
+        if (_currentInteractive.orderedUsage && IsInInventory(_currentInteractive.requirements[_currentInteractive.numberOfUses]) && _currentInteractive.limitedItemUsageAtOnce && scrollSlot == _inventory.IndexOf(_currentInteractive.requirements[_currentInteractive.numberOfUses]))
         {
             currentRequirement = _currentInteractive.requirements[_currentInteractive.numberOfUses];
 
@@ -233,7 +234,7 @@ public class PlayerInteract : MonoBehaviour
 
         for (int i = 0; i < _currentInteractive.requirements.Length; ++i)
         {
-            if (IsInInventory(_currentInteractive.requirements[i]) && _currentInteractive.limitedItemUsageAtOnce)
+            if (IsInInventory(_currentInteractive.requirements[i]) && _currentInteractive.limitedItemUsageAtOnce && scrollSlot == _inventory.IndexOf(_currentInteractive.requirements[i]))
             {
                 currentRequirement = _currentInteractive.requirements[i];
 

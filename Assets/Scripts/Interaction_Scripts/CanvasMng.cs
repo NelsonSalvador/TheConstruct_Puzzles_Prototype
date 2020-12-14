@@ -44,7 +44,7 @@ public class CanvasMng : MonoBehaviour
     public void SetInventoryIcon(int i, Texture icon)
     {
         inventoryIcons[i].texture   = icon;
-        inventoryIcons[i].color     = Color.gray;
+        inventoryIcons[i].color = Color.clear;
     }
 
     public void SetSelectedIcon(int n, int inventoryCount)
@@ -61,7 +61,7 @@ public class CanvasMng : MonoBehaviour
         for (int i = 0; i < inventoryIcons.Length; ++i)
         {
             inventoryIcons[i].texture   = null;
-            inventoryIcons[i].color     = Color.clear;
+            inventoryIcons[i].color = Color.clear;
         }
     }
 
