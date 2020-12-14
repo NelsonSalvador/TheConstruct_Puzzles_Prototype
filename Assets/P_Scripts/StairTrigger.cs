@@ -111,7 +111,7 @@ public class StairTrigger : MonoBehaviour
     {
         _isRunning = true;
 
-        yield return new WaitForSeconds(2);          
+        yield return new WaitForSeconds(1);          
        
         _isRunning = false;
     }
