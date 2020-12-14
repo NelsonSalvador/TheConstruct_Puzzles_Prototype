@@ -90,5 +90,6 @@ public class RotateWorld : MonoBehaviour
         _pivot.rotation = Quaternion.Euler(rotation);
         _children.transform.SetParent(null);
         _pivot.rotation = Quaternion.identity;
+        _stairsVariables.GetComponent<StairTrigger>()._direction = 0;
     }
 }
