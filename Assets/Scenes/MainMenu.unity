@@ -180,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Labyrint Puzzles
+  m_text: 'PortalPuzzles
 
 '
   m_isRightToLeft: 0
@@ -316,7 +316,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Portal Puzzles
+  m_text: 'Labyrint Puzzles
 
 '
   m_isRightToLeft: 0
@@ -987,7 +987,7 @@ GameObject:
   - component: {fileID: 1427102241}
   - component: {fileID: 1427102240}
   m_Layer: 5
-  m_Name: LabyrintPuzzles
+  m_Name: PortalPuzzles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1055,7 +1055,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1427102241}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1915018595}
+        m_TargetAssemblyTypeName: Main_Menu, Assembly-CSharp
+        m_MethodName: PlayPortalsPuzzles
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1427102241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1107,7 +1119,7 @@ GameObject:
   - component: {fileID: 1821300666}
   - component: {fileID: 1821300665}
   m_Layer: 5
-  m_Name: PortalPuzzles
+  m_Name: LabyrintPuzzles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1175,7 +1187,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1821300666}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1915018595}
+        m_TargetAssemblyTypeName: Main_Menu, Assembly-CSharp
+        m_MethodName: PlayLabyrintPuzzles
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1821300666
 MonoBehaviour:
   m_ObjectHideFlags: 0
