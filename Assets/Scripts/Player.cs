@@ -12,8 +12,6 @@ public class Player : MonoBehaviour
     private const float MAX_FORWARD_VELOCITY = 4.0f;
     private const float MAX_BACKWARD_VELOCITY = 2.0f;
     private const float MAX_STRAFE_VELOCITY = 3.0f;
-    private const float MAX_JUMP_VELOCITY = 50.0f;
-    private const float MAX_FALL_VELOCITY = 100.0f;
     private const float ANGULAR_VELOCITY_FACTOR = 2.0f;
     private const float MAX_HEAD_TILT_ROTATION = 60.0f;
     private const float MIN_HEAD_TILT_ROTATION = 280.0f;
@@ -22,7 +20,6 @@ public class Player : MonoBehaviour
     private Transform _cameraTransform;
     private Vector3 _acceleration;
     private Vector3 _velocity;
-    private bool _jump;
     private bool _sprint;
 
     void Start()
@@ -31,7 +28,6 @@ public class Player : MonoBehaviour
         _cameraTransform = GetComponentInChildren<Camera>().transform;
         _acceleration = Vector3.zero;
         _velocity = Vector3.zero;
-        _jump = false;
 
         HideCursor();
     }
@@ -46,7 +42,6 @@ public class Player : MonoBehaviour
     {
         UpdateHeadTilt();
         UpdateRotation();
-        UpdateJump();
         UpdateSprint();
     }
 
@@ -71,11 +66,6 @@ public class Player : MonoBehaviour
         transform.Rotate(0, rotation, 0);
     }
 
-    private void UpdateJump()
-    {
-        if (Input.GetButtonDown("Jump") && _controller.isGrounded)
-            _jump = true;
-    }
 
     private void UpdateSprint()
     {
@@ -99,12 +89,7 @@ public class Player : MonoBehaviour
 
         _acceleration.x = Input.GetAxis("Strafe") * STRAFE_ACCELERATION;
 
-        if (_jump)
-        {
-            _acceleration.y = JUMP_ACCELERATION;
-            _jump = false;
-        }
-        else if (_controller.isGrounded)
+        if (_controller.isGrounded)
             _acceleration.y = 0f;
         else
             _acceleration.y = -GRAVITY_ACCELERATION;
@@ -129,7 +114,7 @@ public class Player : MonoBehaviour
             _velocity.z *= 0.90f;
             _velocity.x *= 0.90f;
         }
-        _velocity.y = (_acceleration.y == 0f) ? -0.1f : Mathf.Clamp(_velocity.y, -MAX_FALL_VELOCITY, MAX_JUMP_VELOCITY);
+        _velocity.y = (_acceleration.y == 0f) ? -0.1f : _velocity.y;
     }
 
     private void UpdatePosition()
