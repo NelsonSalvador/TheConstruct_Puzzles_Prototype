@@ -29,6 +29,7 @@ public class Interactive : MonoBehaviour
 
     private int            playerSize;
     private int            _curInteractionTextId;
+    private int            audioAux  = 0;
 
     [HideInInspector]
     public int             numberOfUses = 0;
@@ -37,12 +38,16 @@ public class Interactive : MonoBehaviour
     public Interactive[]   interactionChain;
     public Texture         icon;
     public Interactive[]   requirements;
+    private AudioSource    interactionAudio;
+    public  AudioClip[]    interactionAudioClips;
+    public  AudioClip      activationAudioClip;
 
     private Animator        _anim;
 
     void Start()
     {
         _anim = GetComponent<Animator>();
+        interactionAudio = GetComponent<AudioSource>();
         _curInteractionTextId   = 0;
     }
 
@@ -58,6 +63,11 @@ public class Interactive : MonoBehaviour
 
         if (_anim != null)
             _anim.SetTrigger("Activate");
+
+        if(interactionAudio != null && activationAudioClip != null)
+        {
+            interactionAudio.PlayOneShot(activationAudioClip);
+        }
     }
 
     private void ProcessActivationChain()
@@ -72,10 +82,23 @@ public class Interactive : MonoBehaviour
     public void Interact()
     {
         playerSize = FindObjectOfType<Player>().GetComponent<PlayerInteract>().playerSize;
+
         if (_anim != null)
         {
             _anim.SetTrigger("Interact");
             _anim.SetInteger("Size", playerSize);
+        }
+
+        if(interactionAudio != null && interactionAudioClips.Length != 0)
+        {
+            interactionAudio.PlayOneShot(interactionAudioClips[audioAux]);
+            audioAux += 1;
+        }
+
+
+        if(audioAux == interactionAudioClips.Length)
+        {
+            audioAux = 0;
         }
 
         if (isActive)
