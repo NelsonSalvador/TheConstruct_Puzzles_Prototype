@@ -35,6 +35,7 @@ public class Interactive : MonoBehaviour
     public int             numberOfUses = 0;
 
     public Interactive[]   activationChain;
+    public Interactive[]   deactivationChain;
     public Interactive[]   interactionChain;
     public Texture         icon;
     public Interactive[]   requirements;
@@ -79,6 +80,23 @@ public class Interactive : MonoBehaviour
         }
     }
 
+    public void Deactivate()
+    {
+        isActive = false;
+
+        if (_anim != null)
+            _anim.SetTrigger("Deactivate");
+    }
+
+    private void ProcessDeactivationChain()
+    {
+        if (deactivationChain != null)
+        {
+            for (int i = 0; i < deactivationChain.Length; ++i)
+                deactivationChain[i].Deactivate();
+        }
+    }
+
     public void Interact()
     {
         playerSize = FindObjectOfType<Player>().GetComponent<PlayerInteract>().playerSize;
@@ -103,6 +121,7 @@ public class Interactive : MonoBehaviour
 
         if (isActive)
         {
+            ProcessDeactivationChain();
             ProcessActivationChain();
             ProcessInteractionChain();
 
