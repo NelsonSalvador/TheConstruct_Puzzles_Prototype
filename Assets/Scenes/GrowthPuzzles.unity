@@ -5333,6 +5333,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3941515351141922757, guid: d3903cae4647b054197aeccb13641e1a, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3941515351141922758, guid: d3903cae4647b054197aeccb13641e1a, type: 3}
       propertyPath: m_Name
       value: PauseCanvas
