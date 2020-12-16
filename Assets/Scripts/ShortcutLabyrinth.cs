@@ -8,7 +8,6 @@ public class ShortcutLabyrinth : MonoBehaviour
     public Transform teleportPoint1;
     public Transform teleportPoint2;
     public Transform teleportPoint3;
-    public Transform teleportPoint4;
 
     private CharacterController cc;
 
@@ -40,13 +39,6 @@ public class ShortcutLabyrinth : MonoBehaviour
         {
 		    cc.enabled = false;
             player.transform.position = teleportPoint3.position;
-            cc.enabled = true;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-		    cc.enabled = false;
-            player.transform.position = teleportPoint4.position;
             cc.enabled = true;
         }
     }

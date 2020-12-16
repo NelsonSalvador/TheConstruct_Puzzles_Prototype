@@ -1523,6 +1523,7 @@ MonoBehaviour:
   interactWhenPicked: 0
   orderedUsage: 0
   limitedItemUsageAtOnce: 0
+  requirementTextActive: 0
   interactionTexts:
   - E to PickUp Box
   requirementForSize: 0
@@ -1530,6 +1531,7 @@ MonoBehaviour:
   requirementText: 
   numberOfUses: 0
   activationChain: []
+  deactivationChain: []
   interactionChain: []
   icon: {fileID: 2800000, guid: 9e571740336145544bf23f826605d27c, type: 3}
   requirements: []
@@ -1603,12 +1605,14 @@ MonoBehaviour:
   interactWhenPicked: 0
   orderedUsage: 0
   limitedItemUsageAtOnce: 0
+  requirementTextActive: 0
   interactionTexts: []
   requirementForSize: 0
   maximumUses: 0
   requirementText: 
   numberOfUses: 0
   activationChain: []
+  deactivationChain: []
   interactionChain: []
   icon: {fileID: 0}
   requirements: []
@@ -2831,6 +2835,7 @@ MonoBehaviour:
   interactWhenPicked: 1
   orderedUsage: 0
   limitedItemUsageAtOnce: 0
+  requirementTextActive: 0
   interactionTexts:
   - E to PickUp Box
   requirementForSize: 0
@@ -2838,7 +2843,9 @@ MonoBehaviour:
   requirementText: 
   numberOfUses: 0
   activationChain: []
-  interactionChain: []
+  deactivationChain: []
+  interactionChain:
+  - {fileID: 1193110096}
   icon: {fileID: 2800000, guid: 9e571740336145544bf23f826605d27c, type: 3}
   requirements: []
   interactionAudioClips: []
@@ -3171,6 +3178,70 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d0398b83ac8e4f449ea26570a62f787, type: 3}
+--- !u!1 &1193110095
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1193110098}
+  - component: {fileID: 1193110096}
+  m_Layer: 0
+  m_Name: soundPicked_Box
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1193110096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193110095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20bcd606f60f9c040a2ddd9b99c13858, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 2
+  isActive: 1
+  consumesItem: 0
+  usedOnAnimation: 0
+  useWhenPicked: 0
+  interactWhenPicked: 0
+  orderedUsage: 0
+  limitedItemUsageAtOnce: 0
+  requirementTextActive: 0
+  interactionTexts: []
+  requirementForSize: 0
+  maximumUses: 0
+  requirementText: 
+  numberOfUses: 0
+  activationChain: []
+  deactivationChain: []
+  interactionChain: []
+  icon: {fileID: 0}
+  requirements: []
+  interactionAudioClips: []
+  activationAudioClip: {fileID: 0}
+--- !u!4 &1193110098
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193110095}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 17.15, y: -0.02, z: 7.7}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_Children: []
+  m_Father: {fileID: 2106196724}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1195164545 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4957478770538164, guid: 46e18d94e2668c5479029197e6379a8e, type: 3}
@@ -3241,6 +3312,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4957478770538164, guid: 46e18d94e2668c5479029197e6379a8e, type: 3}
   m_PrefabInstance: {fileID: 433443384}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1218391844 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4454407499178059064, guid: 287ac6c14d74b9048a0e57d6abb20269, type: 3}
+  m_PrefabInstance: {fileID: 4454407498777469587}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1234898581 stripped
 Transform:
@@ -3365,6 +3441,17 @@ Transform:
   m_Father: {fileID: 2106196724}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1290410310 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8072455958447079045, guid: 287ac6c14d74b9048a0e57d6abb20269, type: 3}
+  m_PrefabInstance: {fileID: 4454407498777469587}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1338438903 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4957478770538164, guid: 46e18d94e2668c5479029197e6379a8e, type: 3}
@@ -3403,7 +3490,7 @@ Transform:
   - {fileID: 417497244}
   - {fileID: 307933984}
   m_Father: {fileID: 2106196724}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1353583986
 PrefabInstance:
@@ -3967,8 +4054,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0e27bf7b81472b94881c880f72b3ad20, type: 3}
-  m_PlayOnAwake: 0
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -4174,12 +4261,14 @@ MonoBehaviour:
   interactWhenPicked: 0
   orderedUsage: 0
   limitedItemUsageAtOnce: 0
+  requirementTextActive: 0
   interactionTexts: []
   requirementForSize: 0
   maximumUses: 0
   requirementText: 
   numberOfUses: 0
   activationChain: []
+  deactivationChain: []
   interactionChain: []
   icon: {fileID: 0}
   requirements: []
@@ -4807,6 +4896,7 @@ MonoBehaviour:
   interactWhenPicked: 0
   orderedUsage: 0
   limitedItemUsageAtOnce: 0
+  requirementTextActive: 0
   interactionTexts:
   - Push Button
   requirementForSize: 0
@@ -4814,6 +4904,7 @@ MonoBehaviour:
   requirementText: 
   numberOfUses: 0
   activationChain: []
+  deactivationChain: []
   interactionChain:
   - {fileID: 541573261}
   icon: {fileID: 0}
@@ -5611,6 +5702,7 @@ Transform:
   - {fileID: 4703829327030565}
   - {fileID: 1407433243}
   - {fileID: 4703829802653235}
+  - {fileID: 1193110098}
   - {fileID: 1505778457}
   - {fileID: 1351482860}
   m_Father: {fileID: 0}
@@ -5897,7 +5989,8 @@ PrefabInstance:
       propertyPath: interactionAudioClips.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 0e27bf7b81472b94881c880f72b3ad20, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9039538343099263720, guid: e9a54e1986694e2499bb680ae04e96a9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e9a54e1986694e2499bb680ae04e96a9, type: 3}
 --- !u!64 &2556281687878970770
 MeshCollider:
@@ -6067,6 +6160,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4454407498669263877, guid: 287ac6c14d74b9048a0e57d6abb20269, type: 3}
+      propertyPath: interactionPanel
+      value: 
+      objectReference: {fileID: 1218391844}
+    - target: {fileID: 4454407498669263877, guid: 287ac6c14d74b9048a0e57d6abb20269, type: 3}
+      propertyPath: interactionText
+      value: 
+      objectReference: {fileID: 1290410310}
     - target: {fileID: 4454407498669263878, guid: 287ac6c14d74b9048a0e57d6abb20269, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6255,7 +6356,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7024980289963591939, guid: 42d68e96644b85c4c99875571a0ae09f, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7024980289963591939, guid: 42d68e96644b85c4c99875571a0ae09f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6293,7 +6394,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pressure_plate_small
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7024980290586402821, guid: 42d68e96644b85c4c99875571a0ae09f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 42d68e96644b85c4c99875571a0ae09f, type: 3}
 --- !u!1 &7046069035100003150
 GameObject:

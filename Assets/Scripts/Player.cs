@@ -7,7 +7,6 @@ public class Player : MonoBehaviour
     private const float FORWARD_ACCELERATION = 10.0f;
     private const float BACKWARD_ACCELERATION = 10.0f;
     private const float STRAFE_ACCELERATION = 10.0f;
-    private const float JUMP_ACCELERATION = 300.0f;
     private const float GRAVITY_ACCELERATION = 10.0f;
     private const float MAX_FORWARD_VELOCITY = 4.0f;
     private const float MAX_BACKWARD_VELOCITY = 2.0f;
