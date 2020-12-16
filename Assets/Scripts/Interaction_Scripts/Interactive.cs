@@ -49,6 +49,7 @@ public class Interactive : MonoBehaviour
     {
         _anim = GetComponent<Animator>();
         interactionAudio = GetComponent<AudioSource>();
+        Debug.Log(interactionAudio);
         _curInteractionTextId   = 0;
     }
 
@@ -107,17 +108,23 @@ public class Interactive : MonoBehaviour
             _anim.SetInteger("Size", playerSize);
         }
 
-        if(interactionAudio != null && interactionAudioClips.Length != 0)
+        
+        if(interactionAudio != null && interactionAudioClips != null)
         {
             interactionAudio.PlayOneShot(interactionAudioClips[audioAux]);
             audioAux += 1;
         }
 
-
-        if(audioAux == interactionAudioClips.Length)
+        if (interactionAudioClips != null)
         {
-            audioAux = 0;
+            if (audioAux == interactionAudioClips.Length)
+            {
+                audioAux = 0;
+            }
         }
+        
+
+        
 
         if (isActive)
         {
