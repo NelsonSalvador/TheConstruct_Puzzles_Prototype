@@ -241,9 +241,8 @@ public class PlayerInteract : MonoBehaviour
                 if (currentRequirement.usedOnAnimation == true)
                 {
                     currentRequirement.gameObject.SetActive(true);
+                    currentRequirement.Interact();
                 }
-
-                currentRequirement.Interact();
 
                 if (currentRequirement.consumesItem == true)
                 {
@@ -312,5 +311,4 @@ public class PlayerInteract : MonoBehaviour
     {
         canvasMng.SetSelectedIcon(scrollSlot, _inventory.Count);
     }
-
 }
