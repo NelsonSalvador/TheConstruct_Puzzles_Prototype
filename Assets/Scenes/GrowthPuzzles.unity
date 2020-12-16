@@ -407,6 +407,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4957478770538164, guid: 46e18d94e2668c5479029197e6379a8e, type: 3}
   m_PrefabInstance: {fileID: 1953094411}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &123864668 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4454407499887530258, guid: 287ac6c14d74b9048a0e57d6abb20269, type: 3}
+  m_PrefabInstance: {fileID: 4454407498777469587}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &132091762 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4957478770538164, guid: 46e18d94e2668c5479029197e6379a8e, type: 3}
@@ -1324,8 +1335,9 @@ MonoBehaviour:
   interactWhenPicked: 0
   orderedUsage: 0
   limitedItemUsageAtOnce: 0
+  requirementTextActive: 0
   interactionTexts:
-  - E to PickUp Box
+  - Left Click to PickUp
   requirementForSize: 0
   maximumUses: 0
   requirementText: 
@@ -2277,8 +2289,9 @@ MonoBehaviour:
   interactWhenPicked: 0
   orderedUsage: 0
   limitedItemUsageAtOnce: 0
+  requirementTextActive: 0
   interactionTexts:
-  - E to PickUp Box
+  - Left Click to PickUp
   requirementForSize: 0
   maximumUses: 0
   requirementText: 
@@ -2356,6 +2369,10 @@ PrefabInstance:
     - target: {fileID: 4762667354012708, guid: 9d33c5200c013c44fad933a9dcd21b2c, type: 3}
       propertyPath: m_LocalScale.z
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 64276406896922416, guid: 9d33c5200c013c44fad933a9dcd21b2c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d33c5200c013c44fad933a9dcd21b2c, type: 3}
@@ -2685,6 +2702,17 @@ Transform:
   m_Father: {fileID: 2106196724}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1336424967 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4454407500097399375, guid: 287ac6c14d74b9048a0e57d6abb20269, type: 3}
+  m_PrefabInstance: {fileID: 4454407498777469587}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1338438903 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4957478770538164, guid: 46e18d94e2668c5479029197e6379a8e, type: 3}
@@ -2874,6 +2902,17 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: a3cd22eceea5e8548b10cdb5d9b49a25, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46e18d94e2668c5479029197e6379a8e, type: 3}
+--- !u!114 &1412564332 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8072455958447079045, guid: 287ac6c14d74b9048a0e57d6abb20269, type: 3}
+  m_PrefabInstance: {fileID: 4454407498777469587}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920388274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1494685288
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3868,8 +3907,9 @@ MonoBehaviour:
   interactWhenPicked: 0
   orderedUsage: 0
   limitedItemUsageAtOnce: 0
+  requirementTextActive: 0
   interactionTexts:
-  - Push Button
+  - Left Click to Push Button
   requirementForSize: 0
   maximumUses: 0
   requirementText: 
@@ -3890,7 +3930,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1847768250}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.12973705, y: -0.12, z: 0.12973705}
@@ -4021,6 +4061,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4957478770538164, guid: 46e18d94e2668c5479029197e6379a8e, type: 3}
   m_PrefabInstance: {fileID: 1681684232}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1920388274 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2569079771746818482, guid: 287ac6c14d74b9048a0e57d6abb20269, type: 3}
+  m_PrefabInstance: {fileID: 4454407498777469587}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1935317422
 GameObject:
@@ -4190,6 +4235,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4957478770538164, guid: 46e18d94e2668c5479029197e6379a8e, type: 3}
   m_PrefabInstance: {fileID: 1494685288}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2037600589 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4454407499620026606, guid: 287ac6c14d74b9048a0e57d6abb20269, type: 3}
+  m_PrefabInstance: {fileID: 4454407498777469587}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2068420519
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4795,11 +4851,40 @@ PrefabInstance:
       propertyPath: maximumUses
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1605460670263522104, guid: e9a54e1986694e2499bb680ae04e96a9, type: 3}
+      propertyPath: interactionTexts.Array.data[0]
+      value: Left Click to place Box
+      objectReference: {fileID: 0}
+    - target: {fileID: 1605460670263522104, guid: e9a54e1986694e2499bb680ae04e96a9, type: 3}
+      propertyPath: requirementText
+      value: Needs a Small Box
+      objectReference: {fileID: 0}
+    - target: {fileID: 1605460670263522104, guid: e9a54e1986694e2499bb680ae04e96a9, type: 3}
+      propertyPath: requirementTextActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1605460670973664384, guid: e9a54e1986694e2499bb680ae04e96a9, type: 3}
+      propertyPath: requirementTextActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9016702775260591373, guid: e9a54e1986694e2499bb680ae04e96a9, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 15303, guid: 0000000000000000f000000000000000, type: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 9039538343099263720, guid: e9a54e1986694e2499bb680ae04e96a9, type: 3}
+      propertyPath: interactionTexts.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9039538343099263720, guid: e9a54e1986694e2499bb680ae04e96a9, type: 3}
+      propertyPath: type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9039538343099263720, guid: e9a54e1986694e2499bb680ae04e96a9, type: 3}
+      propertyPath: consumesItem
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9039538343099263720, guid: e9a54e1986694e2499bb680ae04e96a9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e9a54e1986694e2499bb680ae04e96a9, type: 3}
 --- !u!64 &2556281687878970770
 MeshCollider:
@@ -5074,6 +5159,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inventory
       objectReference: {fileID: 0}
+    - target: {fileID: 4454407498669263877, guid: 287ac6c14d74b9048a0e57d6abb20269, type: 3}
+      propertyPath: interactionText
+      value: 
+      objectReference: {fileID: 1412564332}
+    - target: {fileID: 4454407498669263877, guid: 287ac6c14d74b9048a0e57d6abb20269, type: 3}
+      propertyPath: interactionPanel
+      value: 
+      objectReference: {fileID: 1920388274}
+    - target: {fileID: 4454407498669263877, guid: 287ac6c14d74b9048a0e57d6abb20269, type: 3}
+      propertyPath: inventoryIcons.Array.data[0]
+      value: 
+      objectReference: {fileID: 2037600589}
+    - target: {fileID: 4454407498669263877, guid: 287ac6c14d74b9048a0e57d6abb20269, type: 3}
+      propertyPath: inventoryIcons.Array.data[1]
+      value: 
+      objectReference: {fileID: 1336424967}
+    - target: {fileID: 4454407498669263877, guid: 287ac6c14d74b9048a0e57d6abb20269, type: 3}
+      propertyPath: inventoryIcons.Array.data[2]
+      value: 
+      objectReference: {fileID: 123864668}
     - target: {fileID: 4454407498669263878, guid: 287ac6c14d74b9048a0e57d6abb20269, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5165,6 +5270,18 @@ PrefabInstance:
     - target: {fileID: 4454407498770738544, guid: 287ac6c14d74b9048a0e57d6abb20269, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 14.300049
+      objectReference: {fileID: 0}
+    - target: {fileID: 4454407499425553056, guid: 287ac6c14d74b9048a0e57d6abb20269, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 254.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4454407499425553056, guid: 287ac6c14d74b9048a0e57d6abb20269, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 801
+      objectReference: {fileID: 0}
+    - target: {fileID: 4454407499425553056, guid: 287ac6c14d74b9048a0e57d6abb20269, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 213
       objectReference: {fileID: 0}
     - target: {fileID: 4454407499620026607, guid: 287ac6c14d74b9048a0e57d6abb20269, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -5258,7 +5375,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2694981993969537470, guid: 8dd5f9d6d016d7d42a0edfbbdb0c9202, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.47
+      value: 1.02
       objectReference: {fileID: 0}
     - target: {fileID: 2694981993969537470, guid: 8dd5f9d6d016d7d42a0edfbbdb0c9202, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5313,6 +5430,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2106196724}
     m_Modifications:
+    - target: {fileID: 2513138777512608525, guid: 42d68e96644b85c4c99875571a0ae09f, type: 3}
+      propertyPath: interactionTexts.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2513138777512608525, guid: 42d68e96644b85c4c99875571a0ae09f, type: 3}
+      propertyPath: isActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2513138777512608525, guid: 42d68e96644b85c4c99875571a0ae09f, type: 3}
+      propertyPath: type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2513138777512608525, guid: 42d68e96644b85c4c99875571a0ae09f, type: 3}
+      propertyPath: consumesItem
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2513138778824967801, guid: 42d68e96644b85c4c99875571a0ae09f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -5381,11 +5514,24 @@ PrefabInstance:
       propertyPath: maximumUses
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7024980290920810874, guid: 42d68e96644b85c4c99875571a0ae09f, type: 3}
+      propertyPath: interactionTexts.Array.data[0]
+      value: Left Click to place Box
+      objectReference: {fileID: 0}
+    - target: {fileID: 7024980290920810874, guid: 42d68e96644b85c4c99875571a0ae09f, type: 3}
+      propertyPath: requirementText
+      value: Needs a Big Box
+      objectReference: {fileID: 0}
+    - target: {fileID: 7024980290920810874, guid: 42d68e96644b85c4c99875571a0ae09f, type: 3}
+      propertyPath: requirementTextActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7024980291257307492, guid: 42d68e96644b85c4c99875571a0ae09f, type: 3}
       propertyPath: m_Name
       value: Pressure_plate_small
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2513138777512608525, guid: 42d68e96644b85c4c99875571a0ae09f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 42d68e96644b85c4c99875571a0ae09f, type: 3}
 --- !u!1 &7046069035100003150
 GameObject:
