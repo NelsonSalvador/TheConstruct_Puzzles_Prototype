@@ -48,8 +48,8 @@ public class StairTrigger : MonoBehaviour
 
 
         if ((Physics.Raycast(this.gameObject.GetComponent<Renderer>().bounds.center, transform.TransformDirection(Vector3.forward), out alongZ, 1f) && !_isRunning) ||
-            (Physics.Raycast(this.gameObject.GetComponent<Renderer>().bounds.center + new Vector3(0.65f, 0, 0) , transform.TransformDirection(Vector3.forward), out alongZ, 1f) && !_isRunning) ||
-            (Physics.Raycast(this.gameObject.GetComponent<Renderer>().bounds.center + new Vector3(-0.65f, 0, 0), transform.TransformDirection(Vector3.forward), out alongZ, 1f) && !_isRunning))
+            (Physics.Raycast(this.gameObject.GetComponent<Renderer>().bounds.center + new Vector3(0.3f, 0, 0) , transform.TransformDirection(Vector3.forward), out alongZ, 1f) && !_isRunning) ||
+            (Physics.Raycast(this.gameObject.GetComponent<Renderer>().bounds.center + new Vector3(-0.3f, 0, 0), transform.TransformDirection(Vector3.forward), out alongZ, 1f) && !_isRunning))
         {
             
             CharacterController player = alongZ.collider as CharacterController;
@@ -79,8 +79,8 @@ public class StairTrigger : MonoBehaviour
 
         }
         else if ((Physics.Raycast(this.gameObject.GetComponent<Renderer>().bounds.center, transform.TransformDirection(Vector3.up), out alongX, 1f) && !_isRunning) ||
-                 (Physics.Raycast(this.gameObject.GetComponent<Renderer>().bounds.center + new Vector3(0.65f, 0, 0), transform.TransformDirection(Vector3.up), out alongX, 1f) && !_isRunning) ||
-                 (Physics.Raycast(this.gameObject.GetComponent<Renderer>().bounds.center + new Vector3(-0.65f, 0, 0), transform.TransformDirection(Vector3.up), out alongX, 1f) && !_isRunning))
+                 (Physics.Raycast(this.gameObject.GetComponent<Renderer>().bounds.center + new Vector3(0.3f, 0, 0), transform.TransformDirection(Vector3.up), out alongX, 1f) && !_isRunning) ||
+                 (Physics.Raycast(this.gameObject.GetComponent<Renderer>().bounds.center + new Vector3(-0.3f, 0, 0), transform.TransformDirection(Vector3.up), out alongX, 1f) && !_isRunning))
         {
            
             CharacterController player = alongX.collider as CharacterController;
@@ -111,12 +111,12 @@ public class StairTrigger : MonoBehaviour
            
         }
         Debug.DrawRay(this.gameObject.GetComponent<Renderer>().bounds.center, transform.TransformDirection(Vector3.up), Color.green);
-        Debug.DrawRay(this.gameObject.GetComponent<Renderer>().bounds.center + new Vector3(0.65f, 0, 0), transform.TransformDirection(Vector3.up), Color.green);
-        Debug.DrawRay(this.gameObject.GetComponent<Renderer>().bounds.center + new Vector3(-0.65f, 0, 0), transform.TransformDirection(Vector3.up), Color.green);
+        Debug.DrawRay(this.gameObject.GetComponent<Renderer>().bounds.center + new Vector3(0.3f, 0, 0), transform.TransformDirection(Vector3.up), Color.green);
+        Debug.DrawRay(this.gameObject.GetComponent<Renderer>().bounds.center + new Vector3(-0.3f, 0, 0), transform.TransformDirection(Vector3.up), Color.green);
 
         Debug.DrawRay(this.gameObject.GetComponent<Renderer>().bounds.center, transform.TransformDirection(Vector3.forward), Color.blue);
-        Debug.DrawRay(this.gameObject.GetComponent<Renderer>().bounds.center + new Vector3(0.65f, 0, 0), transform.TransformDirection(Vector3.forward), Color.blue);
-        Debug.DrawRay(this.gameObject.GetComponent<Renderer>().bounds.center + new Vector3(-0.65f, 0, 0), transform.TransformDirection(Vector3.forward), Color.blue);
+        Debug.DrawRay(this.gameObject.GetComponent<Renderer>().bounds.center + new Vector3(0.3f, 0, 0), transform.TransformDirection(Vector3.forward), Color.blue);
+        Debug.DrawRay(this.gameObject.GetComponent<Renderer>().bounds.center + new Vector3(-0.3f, 0, 0), transform.TransformDirection(Vector3.forward), Color.blue);
     }
 
     private IEnumerator Wait()
