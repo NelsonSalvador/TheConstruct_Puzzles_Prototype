@@ -180,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'PortalPuzzles
+  m_text: 'Portal Puzzles
 
 '
   m_isRightToLeft: 0
@@ -316,7 +316,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Labyrint Puzzles
+  m_text: 'Labyrinth Puzzles
 
 '
   m_isRightToLeft: 0
@@ -1216,7 +1216,7 @@ GameObject:
   - component: {fileID: 1821300666}
   - component: {fileID: 1821300665}
   m_Layer: 5
-  m_Name: LabyrintPuzzles
+  m_Name: LabyrinthPuzzles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
