@@ -1384,6 +1384,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4454407498669263877, guid: 287ac6c14d74b9048a0e57d6abb20269, type: 3}
+      propertyPath: interactionText
+      value: 
+      objectReference: {fileID: 863254517}
+    - target: {fileID: 4454407498669263877, guid: 287ac6c14d74b9048a0e57d6abb20269, type: 3}
+      propertyPath: interactionPanel
+      value: 
+      objectReference: {fileID: 863254518}
     - target: {fileID: 4454407498669263878, guid: 287ac6c14d74b9048a0e57d6abb20269, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1454,6 +1462,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 287ac6c14d74b9048a0e57d6abb20269, type: 3}
+--- !u!114 &863254517 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8072455958447079045, guid: 287ac6c14d74b9048a0e57d6abb20269, type: 3}
+  m_PrefabInstance: {fileID: 863254516}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863254518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &863254518 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2569079771746818482, guid: 287ac6c14d74b9048a0e57d6abb20269, type: 3}
+  m_PrefabInstance: {fileID: 863254516}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &888446769 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9013678841222741402, guid: 0a6fdad0b78444640b2613761239dae1, type: 3}
@@ -2699,6 +2723,7 @@ MonoBehaviour:
   interactWhenPicked: 0
   orderedUsage: 0
   limitedItemUsageAtOnce: 0
+  requirementTextActive: 0
   interactionTexts:
   - Put box
   requirementForSize: 0
@@ -2895,6 +2920,7 @@ MonoBehaviour:
   interactWhenPicked: 1
   orderedUsage: 0
   limitedItemUsageAtOnce: 0
+  requirementTextActive: 0
   interactionTexts:
   - Pickup Box
   requirementForSize: 0
@@ -3239,6 +3265,7 @@ MonoBehaviour:
   interactWhenPicked: 0
   orderedUsage: 0
   limitedItemUsageAtOnce: 0
+  requirementTextActive: 0
   interactionTexts: []
   requirementForSize: 0
   maximumUses: 0
@@ -3445,6 +3472,7 @@ MonoBehaviour:
   interactWhenPicked: 0
   orderedUsage: 0
   limitedItemUsageAtOnce: 0
+  requirementTextActive: 0
   interactionTexts: []
   requirementForSize: 0
   maximumUses: 0
@@ -3517,6 +3545,7 @@ MonoBehaviour:
   interactWhenPicked: 0
   orderedUsage: 0
   limitedItemUsageAtOnce: 0
+  requirementTextActive: 0
   interactionTexts: []
   requirementForSize: 0
   maximumUses: 0
@@ -3584,6 +3613,7 @@ MonoBehaviour:
   interactWhenPicked: 0
   orderedUsage: 0
   limitedItemUsageAtOnce: 0
+  requirementTextActive: 0
   interactionTexts:
   - Push Button
   requirementForSize: 0
@@ -4162,6 +4192,7 @@ MonoBehaviour:
   interactWhenPicked: 0
   orderedUsage: 0
   limitedItemUsageAtOnce: 0
+  requirementTextActive: 0
   interactionTexts: []
   requirementForSize: 0
   maximumUses: 0
