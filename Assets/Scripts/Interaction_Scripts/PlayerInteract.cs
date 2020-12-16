@@ -57,14 +57,18 @@ public class PlayerInteract : MonoBehaviour
             Interactive interactive = hitInfo.transform.GetComponent<Interactive>();
 
             if (interactive == null)
+            {
                 ClearCurrentInteractive();
+            }
 
             else if (interactive != _currentInteractive)
                 SetCurrentInteractive(interactive);
         }
 
         else
+        {
             ClearCurrentInteractive();
+        }
     }
 
     private void SetCurrentInteractive(Interactive interactive)
@@ -75,7 +79,10 @@ public class PlayerInteract : MonoBehaviour
         {
             _requirementsInInventory = true;
 
-            canvasMng.ShowInteractionPanel(interactive.GetInteractionText());
+            if (_currentInteractive.interactionTexts != null)
+            {
+                canvasMng.ShowInteractionPanel(_currentInteractive.GetInteractionText());
+            }
 
             // Diálogo é adicionado à queue  se ele existir relacionado com observar este objeto (quando se preenche os requerimentos)
             // Se for interactiveDialogue, o diálogo è adicionado à waiting_Dialogue e o texto à recordedIntDialogue[];
@@ -85,7 +92,10 @@ public class PlayerInteract : MonoBehaviour
         {
             _requirementsInInventory = false;
 
-            canvasMng.ShowInteractionPanel(interactive.requirementText);
+            if(_currentInteractive.requirementText != null && _currentInteractive.requirementTextActive)
+            {
+                canvasMng.ShowInteractionPanel(_currentInteractive.requirementText);
+            }
 
             // Diálogo é adicionado à queue se ele existir relacionado com observar este objeto (quando se falha os requerimentos)
             // Se for interactiveDialogue, o diálogo è adicionado à waiting_Dialogue e o texto à recordedIntDialogue[];

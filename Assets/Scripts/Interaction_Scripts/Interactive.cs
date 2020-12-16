@@ -12,6 +12,7 @@ public class Interactive : MonoBehaviour
     public bool             interactWhenPicked;
     public bool             orderedUsage;
     public bool             limitedItemUsageAtOnce;
+    public bool             requirementTextActive;
     public string[]         interactionTexts;
     public int              requirementForSize = 0;
     public int              maximumUses;
@@ -49,7 +50,6 @@ public class Interactive : MonoBehaviour
     {
         _anim = GetComponent<Animator>();
         interactionAudio = GetComponent<AudioSource>();
-        Debug.Log(interactionAudio);
         _curInteractionTextId   = 0;
     }
 
@@ -108,7 +108,6 @@ public class Interactive : MonoBehaviour
             _anim.SetInteger("Size", playerSize);
         }
 
-        
         if(interactionAudio != null && interactionAudioClips != null)
         {
             interactionAudio.PlayOneShot(interactionAudioClips[audioAux]);
@@ -122,9 +121,6 @@ public class Interactive : MonoBehaviour
                 audioAux = 0;
             }
         }
-        
-
-        
 
         if (isActive)
         {
@@ -136,8 +132,10 @@ public class Interactive : MonoBehaviour
 
             if (maximumUses == numberOfUses || type == InteractiveType.Pickable)
                 GetComponent<BoxCollider>().enabled = false;
-            else if ((maximumUses != numberOfUses) && (interactionTexts.Length != 0))
+            else if ((maximumUses != numberOfUses) && (!IsNullOrEmpty(interactionTexts)))
+            {
                 _curInteractionTextId = (_curInteractionTextId + 1) % interactionTexts.Length;
+            }
         }
     }
 
@@ -148,5 +146,10 @@ public class Interactive : MonoBehaviour
             for (int i = 0; i < interactionChain.Length; ++i)
                 interactionChain[i].Interact();
         }
+    }
+
+    static bool IsNullOrEmpty(string[] intTexts)
+    {
+        return intTexts == null || intTexts.Length == 0;
     }
 }
