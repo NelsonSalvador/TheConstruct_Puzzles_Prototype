@@ -79,7 +79,7 @@ public class PlayerInteract : MonoBehaviour
         {
             _requirementsInInventory = true;
 
-            if (_currentInteractive.interactionTexts != null)
+            if (_currentInteractive.interactionTexts != null && _currentInteractive.interactionTexts.Length != 0)
             {
                 canvasMng.ShowInteractionPanel(_currentInteractive.GetInteractionText());
             }

@@ -55,7 +55,14 @@ public class Interactive : MonoBehaviour
 
     public string GetInteractionText()
     {
-        return interactionTexts[_curInteractionTextId];
+        if(_curInteractionTextId <= interactionTexts.Length)
+        {
+            return interactionTexts[_curInteractionTextId];
+        }
+        else
+        {
+            return " ";
+        }
     }
 
     //Só é chamada por interações que ativam outras
@@ -74,7 +81,7 @@ public class Interactive : MonoBehaviour
 
     private void ProcessActivationChain()
     {
-        if (activationChain != null)
+        if (activationChain != null && activationChain.Length != 0)
         {
             for (int i = 0; i < activationChain.Length; ++i)
                 activationChain[i].Activate();
@@ -91,7 +98,7 @@ public class Interactive : MonoBehaviour
 
     private void ProcessDeactivationChain()
     {
-        if (deactivationChain != null)
+        if (deactivationChain != null && deactivationChain.Length != 0)
         {
             for (int i = 0; i < deactivationChain.Length; ++i)
                 deactivationChain[i].Deactivate();
@@ -141,7 +148,7 @@ public class Interactive : MonoBehaviour
 
     private void ProcessInteractionChain()
     {
-        if (interactionChain != null)
+        if (interactionChain != null && interactionChain.Length != 0)
         {
             for (int i = 0; i < interactionChain.Length; ++i)
                 interactionChain[i].Interact();
