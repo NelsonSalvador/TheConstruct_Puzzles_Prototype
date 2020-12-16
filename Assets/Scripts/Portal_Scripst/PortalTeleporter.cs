@@ -29,7 +29,7 @@ public class PortalTeleporter : MonoBehaviour
                 cc.enabled = false;
 
                 float rotationDiff = -Quaternion.Angle(transform.rotation, teleportPoint.rotation);
-                Debug.Log(rotationDiff);
+
                 //rotationDiff += 180;
                 player.Rotate(Vector3.up, rotationDiff);
 
@@ -67,7 +67,7 @@ public class PortalTeleporter : MonoBehaviour
                         player.transform.localScale = player.transform.localScale - new Vector3(0, player.localScale.y / 2, 0);
                         player.position = teleportPoint.position + positionOffset + portalOffsets - new Vector3(0, player.GetComponent<CharacterController>().height / 4, 0);
                         player.GetComponent<PlayerInteract>().playerSize -= 1;
-                    }                      
+                    }
                     else if (player.GetComponent<PlayerInteract>().playerSize == 1)
                     {
                         player.transform.localScale = player.transform.localScale - new Vector3(0, player.localScale.y / 2, 0);
