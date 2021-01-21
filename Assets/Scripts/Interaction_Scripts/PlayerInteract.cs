@@ -13,6 +13,7 @@ public class PlayerInteract : MonoBehaviour
     //private List<Interactive> waiting_noninteractionDialogue;
     private bool                _requirementsInInventory;
     private List<Interactive>   _inventory;
+    public List<int>           _inventorySize;
     private int                 scrollSlot = 1;
     private int                 scrollAux = 0;
     private bool                added;
@@ -25,6 +26,7 @@ public class PlayerInteract : MonoBehaviour
         _cameraTransform            = GetComponentInChildren<Camera>().transform;
         _requirementsInInventory    = false;
         _inventory                  = new List<Interactive>();
+        _inventorySize              = new List<int>();
     }
 
     void Update()
@@ -75,7 +77,10 @@ public class PlayerInteract : MonoBehaviour
         {
             _requirementsInInventory = true;
 
-            canvasMng.ShowInteractionPanel(interactive.GetInteractionText());
+            if(interactive.GetInteractionText() != "")
+            {
+                canvasMng.ShowInteractionPanel(interactive.GetInteractionText());
+            }
 
             // Diálogo é adicionado à queue  se ele existir relacionado com observar este objeto (quando se preenche os requerimentos)
             // Se for interactiveDialogue, o diálogo è adicionado à waiting_Dialogue e o texto à recordedIntDialogue[];
@@ -85,7 +90,10 @@ public class PlayerInteract : MonoBehaviour
         {
             _requirementsInInventory = false;
 
-            canvasMng.ShowInteractionPanel(interactive.requirementText);
+            if(interactive.requirementText != "")
+            {
+                canvasMng.ShowInteractionPanel(interactive.requirementText);
+            }
 
             // Diálogo é adicionado à queue se ele existir relacionado com observar este objeto (quando se falha os requerimentos)
             // Se for interactiveDialogue, o diálogo è adicionado à waiting_Dialogue e o texto à recordedIntDialogue[];
@@ -96,12 +104,16 @@ public class PlayerInteract : MonoBehaviour
     //Vê se o jogador preenche os requerimentos de interação
     private bool PlayerHasInteractionRequirements()
     {
+        if (_currentInteractive.numberOfUses == _currentInteractive.maximumUses)
+        {
+            return false;
+        }
         if (_currentInteractive.requirements == null)
         {
             return true;
         }
 
-        if (_currentInteractive.orderedUsage && IsInInventory(_currentInteractive.requirements[_currentInteractive.numberOfUses]) && _currentInteractive.limitedItemUsageAtOnce)
+        if (_currentInteractive.orderedUsage && IsInInventory(_currentInteractive.requirements[_currentInteractive.numberOfUses]) && (_currentInteractive.itemSizeRestriction[_currentInteractive.numberOfUses] == _inventorySize[_inventory.IndexOf(_currentInteractive.requirements[_currentInteractive.numberOfUses])] || _currentInteractive.itemSizeRestriction.Length == 0) && _currentInteractive.limitedItemUsageAtOnce)
         {
             return true;
         }
@@ -116,9 +128,20 @@ public class PlayerInteract : MonoBehaviour
             {
                 return false;
             }
+            else if (IsInInventory(_currentInteractive.requirements[i]) && !_currentInteractive.limitedItemUsageAtOnce && _currentInteractive.itemSizeRestriction[i] != 0 && _currentInteractive.itemSizeRestriction[i] != _inventorySize[_inventory.IndexOf(_currentInteractive.requirements[i])])
+            {
+                return false;
+            }
             else if (_currentInteractive.limitedItemUsageAtOnce && IsInInventory(_currentInteractive.requirements[i]))
             {
-                return true;
+                if(_currentInteractive.itemSizeRestriction.Length == 0)
+                {
+                    return true;
+                }
+                else if(_currentInteractive.itemSizeRestriction[i] == _inventorySize[_inventory.IndexOf(_currentInteractive.requirements[i])])
+                {
+                    return true;
+                }
             }
         }
 
@@ -210,7 +233,7 @@ public class PlayerInteract : MonoBehaviour
     private void InteractWithCurrentInteractive()
     {
 
-        if (_currentInteractive.orderedUsage && IsInInventory(_currentInteractive.requirements[_currentInteractive.numberOfUses]) && _currentInteractive.limitedItemUsageAtOnce && scrollSlot == _inventory.IndexOf(_currentInteractive.requirements[_currentInteractive.numberOfUses]))
+        if (_currentInteractive.orderedUsage && IsInInventory(_currentInteractive.requirements[_currentInteractive.numberOfUses]) && (_currentInteractive.itemSizeRestriction[_currentInteractive.numberOfUses] == _inventorySize[_inventory.IndexOf(_currentInteractive.requirements[_currentInteractive.numberOfUses])] || _currentInteractive.itemSizeRestriction.Length == 0) && _currentInteractive.limitedItemUsageAtOnce && scrollSlot == _inventory.IndexOf(_currentInteractive.requirements[_currentInteractive.numberOfUses]))
         {
             currentRequirement = _currentInteractive.requirements[_currentInteractive.numberOfUses];
 
@@ -234,7 +257,7 @@ public class PlayerInteract : MonoBehaviour
 
         for (int i = 0; i < _currentInteractive.requirements.Length; ++i)
         {
-            if (IsInInventory(_currentInteractive.requirements[i]) && _currentInteractive.limitedItemUsageAtOnce && scrollSlot == _inventory.IndexOf(_currentInteractive.requirements[i]))
+            if (IsInInventory(_currentInteractive.requirements[i]) && _currentInteractive.limitedItemUsageAtOnce && (_currentInteractive.itemSizeRestriction[i] == _inventorySize[_inventory.IndexOf(_currentInteractive.requirements[i])] || _currentInteractive.itemSizeRestriction.Length == 0) && scrollSlot == _inventory.IndexOf(_currentInteractive.requirements[i]))
             {
                 currentRequirement = _currentInteractive.requirements[i];
 
@@ -248,6 +271,8 @@ public class PlayerInteract : MonoBehaviour
                 {
                     RemoveFromInventory(currentRequirement);
                 }
+
+                _currentInteractive.Interact();
 
                 break;
             }
@@ -273,7 +298,11 @@ public class PlayerInteract : MonoBehaviour
             //O _currentInteractive.interactionDialogue è adicionado à waiting_Dialogue e o _currentInteractive.interactionDialogueText à recordedIntDialogue[];
         }
 
-        _currentInteractive.Interact();
+        if (!_currentInteractive.limitedItemUsageAtOnce)
+        {
+            _currentInteractive.Interact();
+        }
+
         //Se interactionDialogue:
         //O _currentInteractive.interactionDialogue è adicionado à waiting_Dialogue e o _currentInteractive.interactionDialogueText à recordedIntDialogue[];
 
@@ -284,6 +313,7 @@ public class PlayerInteract : MonoBehaviour
     private void AddToInventory(Interactive item)
     {
         _inventory.Add(item);
+        _inventorySize.Add(0);
         canvasMng.SetInventoryIcon(_inventory.Count - 1, item.icon);
         CheckForScroll(1);
     }
@@ -291,6 +321,7 @@ public class PlayerInteract : MonoBehaviour
     //Remove objeto e o seu icon do inventário
     private void RemoveFromInventory(Interactive item)
     {
+        _inventorySize.RemoveAt(_inventory.IndexOf(item));
         _inventory.Remove(item);
 
         canvasMng.ClearInventoryIcons();

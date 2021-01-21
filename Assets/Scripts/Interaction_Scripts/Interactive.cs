@@ -39,6 +39,7 @@ public class Interactive : MonoBehaviour
     public Interactive[]   interactionChain;
     public Texture         icon;
     public Interactive[]   requirements;
+    public int[]           itemSizeRestriction;
     private AudioSource    interactionAudio;
     public  AudioClip[]    interactionAudioClips;
     public  AudioClip      activationAudioClip;
@@ -50,12 +51,19 @@ public class Interactive : MonoBehaviour
         _anim = GetComponent<Animator>();
         interactionAudio = GetComponent<AudioSource>();
         Debug.Log(interactionAudio);
-        _curInteractionTextId   = 0;
+        _curInteractionTextId  = 0;
     }
 
     public string GetInteractionText()
     {
-        return interactionTexts[_curInteractionTextId];
+        if(interactionTexts.Length > 0)
+        {
+            return interactionTexts[_curInteractionTextId];
+        }
+        else
+        {
+            return "";
+        }
     }
 
     //Só é chamada por interações que ativam outras
