@@ -104,7 +104,7 @@ public class PlayerInteract : MonoBehaviour
     //Vê se o jogador preenche os requerimentos de interação
     private bool PlayerHasInteractionRequirements()
     {
-        if (_currentInteractive.numberOfUses == _currentInteractive.maximumUses)
+        if (_currentInteractive.numberOfUses == _currentInteractive.maximumUses && _currentInteractive.maximumUses != 0)
         {
             return false;
         }
@@ -257,7 +257,7 @@ public class PlayerInteract : MonoBehaviour
 
         for (int i = 0; i < _currentInteractive.requirements.Length; ++i)
         {
-            if (IsInInventory(_currentInteractive.requirements[i]) && _currentInteractive.limitedItemUsageAtOnce && (_currentInteractive.itemSizeRestriction[i] == _inventorySize[_inventory.IndexOf(_currentInteractive.requirements[i])] || _currentInteractive.itemSizeRestriction.Length == 0) && scrollSlot == _inventory.IndexOf(_currentInteractive.requirements[i]))
+            if (IsInInventory(_currentInteractive.requirements[i]) && _currentInteractive.limitedItemUsageAtOnce && (_currentInteractive.itemSizeRestriction.Length == 0 || _currentInteractive.itemSizeRestriction[i] == _inventorySize[_inventory.IndexOf(_currentInteractive.requirements[i])]) && scrollSlot == _inventory.IndexOf(_currentInteractive.requirements[i]))
             {
                 currentRequirement = _currentInteractive.requirements[i];
 
