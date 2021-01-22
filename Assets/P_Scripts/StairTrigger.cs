@@ -22,6 +22,11 @@ public class StairTrigger : MonoBehaviour
 
     new Vector3 renderer;
 
+    private void Start()
+    {
+        
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -29,6 +34,7 @@ public class StairTrigger : MonoBehaviour
         {
             GameObject.FindGameObjectWithTag("World").GetComponent<RotateWorld>().rotating = true;
             GameObject.FindGameObjectWithTag("World").GetComponent<RotateWorld>()._stairsVariables = this.gameObject;
+            Debug.Log("Entrou no collider");
             StartCoroutine(Wait());
         }
         
@@ -52,35 +58,32 @@ public class StairTrigger : MonoBehaviour
 
 
         if (Physics.Raycast(renderer
-            + (transform.TransformDirection(Vector3.forward) * 1.5f) 
-            + (transform.TransformDirection(Vector3.left) * 2 )
+            + transform.TransformDirection(Vector3.forward) 
+            + (transform.TransformDirection(Vector3.left)* 1.5f)
             + (transform.TransformDirection(Vector3.up) * 0.5f)
             , transform.TransformDirection(Vector3.right)
-            , out alongZ, 6f) && !_isRunning)
+            , out alongZ, 2f, 1 << LayerMask.NameToLayer("Player")) && !_isRunning)
         {
+            Debug.Log("Entrou Azul");
             
-            CharacterController player = alongZ.collider as CharacterController;
-            if (player != null)
+            if (_isX)
             {
-                
-                if (_isX)
-                {
-                    angle = Vector3.Angle(transform.TransformDirection(Vector3.forward), _pivot.transform.TransformDirection(Vector3.forward));
+                angle = Vector3.Angle(transform.TransformDirection(Vector3.forward), _pivot.transform.TransformDirection(Vector3.forward));
 
-                    if ((179 < angle && angle < 181) || (89 < angle && angle < 91))
-                        _direction = 1;
-                    else
-                        _direction = -1;
-                }
+                if ((179 < angle && angle < 181) || (89 < angle && angle < 91))
+                    _direction = 1;
                 else
-                {
-                    angle = Vector3.Angle(transform.TransformDirection(Vector3.forward), _pivot.transform.TransformDirection(Vector3.right));
-                    if (179 < angle && angle < 181)
-                        _direction = 1;
-                    else
-                        _direction = -1;
-                }
+                    _direction = -1;
             }
+            else
+            {
+                angle = Vector3.Angle(transform.TransformDirection(Vector3.forward), _pivot.transform.TransformDirection(Vector3.right));
+                if (179 < angle && angle < 181)
+                    _direction = 1;
+                else
+                    _direction = -1;
+            }
+            
            
 
         }
@@ -89,33 +92,31 @@ public class StairTrigger : MonoBehaviour
             + (transform.TransformDirection(Vector3.left) * 2)
             + (transform.TransformDirection(Vector3.up) * 0.5f)
             , transform.TransformDirection(Vector3.right)
-            , out alongX, 6f) && !_isRunning)
+            , out alongX, 6f, 1 << LayerMask.NameToLayer("Player")) && !_isRunning)
+
         {
-           
-            CharacterController player = alongX.collider as CharacterController;
-            if (player != null)
+            Debug.Log("Entrou Verde");
+
+            if (_isX)
             {
-                
-                if (_isX)
-                {
-                    angle = Vector3.Angle(transform.TransformDirection(Vector3.up), _pivot.transform.TransformDirection(Vector3.forward));
-
-                    if (179 < angle && angle < 181)
-                        _direction = 1;
-                    else
-                        _direction = -1;
-                }
+                angle = Vector3.Angle(transform.TransformDirection(Vector3.up), _pivot.transform.TransformDirection(Vector3.forward));
+        
+                if (179 < angle && angle < 181)
+                    _direction = 1;
                 else
-                {
-                    angle = Vector3.Angle(transform.TransformDirection(Vector3.up), _pivot.transform.TransformDirection(Vector3.right));
-                    Debug.Log(angle);
-                    if (179 < angle && angle < 181)
-                        _direction = 1;
-                    else
-                        _direction = -1;
-                }
+                    _direction = -1;
             }
-
+            else
+            {
+                angle = Vector3.Angle(transform.TransformDirection(Vector3.up), _pivot.transform.TransformDirection(Vector3.right));
+                Debug.Log(angle);
+                if (179 < angle && angle < 181)
+                    _direction = 1;
+                else
+                    _direction = -1;
+            }
+            
+        
            
         }
         Debug.DrawRay(renderer + transform.TransformDirection(Vector3.up)+
@@ -123,10 +124,10 @@ public class StairTrigger : MonoBehaviour
             (transform.TransformDirection(Vector3.forward) * 0.5f),
             transform.TransformDirection(Vector3.right), Color.red);
 
-        Debug.DrawRay(renderer + transform.TransformDirection(Vector3.forward)+
-            (transform.TransformDirection(Vector3.left) * 2) +
-            (transform.TransformDirection(Vector3.up) * 0.5f), 
-            transform.TransformDirection(Vector3.right), Color.blue);
+        Debug.DrawRay(renderer +  transform.TransformDirection(Vector3.forward)
+            + (transform.TransformDirection(Vector3.left) * 1.5f)
+            + (transform.TransformDirection(Vector3.up) * 0.5f)
+            , transform.TransformDirection(Vector3.right), Color.blue);
     }
 
     private IEnumerator Wait()
