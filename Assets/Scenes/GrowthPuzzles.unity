@@ -1325,15 +1325,19 @@ MonoBehaviour:
   orderedUsage: 0
   limitedItemUsageAtOnce: 0
   interactionTexts:
-  - E to PickUp Box
+  - Left Click
   requirementForSize: 0
   maximumUses: 0
   requirementText: 
   numberOfUses: 0
   activationChain: []
+  deactivationChain: []
   interactionChain: []
   icon: {fileID: 2800000, guid: 9e571740336145544bf23f826605d27c, type: 3}
   requirements: []
+  itemSizeRestriction: 
+  interactionAudioClips: []
+  activationAudioClip: {fileID: 0}
 --- !u!65 &502158426
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2341,15 +2345,19 @@ MonoBehaviour:
   orderedUsage: 0
   limitedItemUsageAtOnce: 0
   interactionTexts:
-  - E to PickUp Box
+  - Left Click
   requirementForSize: 0
   maximumUses: 0
   requirementText: 
   numberOfUses: 0
   activationChain: []
+  deactivationChain: []
   interactionChain: []
   icon: {fileID: 2800000, guid: 9e571740336145544bf23f826605d27c, type: 3}
   requirements: []
+  itemSizeRestriction: 
+  interactionAudioClips: []
+  activationAudioClip: {fileID: 0}
 --- !u!1001 &1059377138
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3864,15 +3872,19 @@ MonoBehaviour:
   limitedItemUsageAtOnce: 0
   interactionTexts:
   - Push Button
-  requirementForSize: 0
+  requirementForSize: 1
   maximumUses: 0
   requirementText: 
   numberOfUses: 0
   activationChain: []
+  deactivationChain: []
   interactionChain:
   - {fileID: 541573261}
   icon: {fileID: 0}
   requirements: []
+  itemSizeRestriction: 
+  interactionAudioClips: []
+  activationAudioClip: {fileID: 0}
 --- !u!65 &1847768256
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3881,7 +3893,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1847768250}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.12973705, y: -0.12, z: 0.12973705}
@@ -4767,6 +4779,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1605460670263522104, guid: e9a54e1986694e2499bb680ae04e96a9, type: 3}
+      propertyPath: itemSizeRestriction.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1605460670263522104, guid: e9a54e1986694e2499bb680ae04e96a9, type: 3}
       propertyPath: interactionChain.Array.data[1]
       value: 
       objectReference: {fileID: 1364419704}
@@ -4786,10 +4802,34 @@ PrefabInstance:
       propertyPath: maximumUses
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1605460670263522104, guid: e9a54e1986694e2499bb680ae04e96a9, type: 3}
+      propertyPath: itemSizeRestriction.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1605460670263522104, guid: e9a54e1986694e2499bb680ae04e96a9, type: 3}
+      propertyPath: itemSizeRestriction.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9016702775260591373, guid: e9a54e1986694e2499bb680ae04e96a9, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 15303, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 9039538343099263720, guid: e9a54e1986694e2499bb680ae04e96a9, type: 3}
+      propertyPath: interactionTexts.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9039538343099263720, guid: e9a54e1986694e2499bb680ae04e96a9, type: 3}
+      propertyPath: type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9039538343099263720, guid: e9a54e1986694e2499bb680ae04e96a9, type: 3}
+      propertyPath: isActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9039538343099263720, guid: e9a54e1986694e2499bb680ae04e96a9, type: 3}
+      propertyPath: consumesItem
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9a54e1986694e2499bb680ae04e96a9, type: 3}
 --- !u!64 &2556281687878970770
@@ -5249,7 +5289,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2694981993969537470, guid: 8dd5f9d6d016d7d42a0edfbbdb0c9202, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.47
+      value: 6.55
       objectReference: {fileID: 0}
     - target: {fileID: 2694981993969537470, guid: 8dd5f9d6d016d7d42a0edfbbdb0c9202, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5257,7 +5297,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2694981993969537470, guid: 8dd5f9d6d016d7d42a0edfbbdb0c9202, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.94
+      value: 6.23
       objectReference: {fileID: 0}
     - target: {fileID: 2694981993969537470, guid: 8dd5f9d6d016d7d42a0edfbbdb0c9202, type: 3}
       propertyPath: m_LocalRotation.x
@@ -5304,6 +5344,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2106196724}
     m_Modifications:
+    - target: {fileID: 2513138777512608525, guid: 42d68e96644b85c4c99875571a0ae09f, type: 3}
+      propertyPath: interactionTexts.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2513138777512608525, guid: 42d68e96644b85c4c99875571a0ae09f, type: 3}
+      propertyPath: type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2513138777512608525, guid: 42d68e96644b85c4c99875571a0ae09f, type: 3}
+      propertyPath: isActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2513138777512608525, guid: 42d68e96644b85c4c99875571a0ae09f, type: 3}
+      propertyPath: consumesItem
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2513138778824967801, guid: 42d68e96644b85c4c99875571a0ae09f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -5353,6 +5409,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7024980290920810874, guid: 42d68e96644b85c4c99875571a0ae09f, type: 3}
+      propertyPath: itemSizeRestriction.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7024980290920810874, guid: 42d68e96644b85c4c99875571a0ae09f, type: 3}
       propertyPath: interactionChain.Array.data[1]
       value: 
       objectReference: {fileID: 1364419704}
@@ -5371,6 +5431,18 @@ PrefabInstance:
     - target: {fileID: 7024980290920810874, guid: 42d68e96644b85c4c99875571a0ae09f, type: 3}
       propertyPath: maximumUses
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7024980290920810874, guid: 42d68e96644b85c4c99875571a0ae09f, type: 3}
+      propertyPath: requirementForSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7024980290920810874, guid: 42d68e96644b85c4c99875571a0ae09f, type: 3}
+      propertyPath: itemSizeRestriction.Array.data[0]
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7024980290920810874, guid: 42d68e96644b85c4c99875571a0ae09f, type: 3}
+      propertyPath: itemSizeRestriction.Array.data[1]
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 7024980291257307492, guid: 42d68e96644b85c4c99875571a0ae09f, type: 3}
       propertyPath: m_Name
