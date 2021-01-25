@@ -233,7 +233,10 @@ public class PlayerInteract : MonoBehaviour
     private void InteractWithCurrentInteractive()
     {
 
-        if (_currentInteractive.orderedUsage && IsInInventory(_currentInteractive.requirements[_currentInteractive.numberOfUses]) && (_currentInteractive.itemSizeRestriction[_currentInteractive.numberOfUses] == _inventorySize[_inventory.IndexOf(_currentInteractive.requirements[_currentInteractive.numberOfUses])] || _currentInteractive.itemSizeRestriction.Length == 0) && _currentInteractive.limitedItemUsageAtOnce && scrollSlot == _inventory.IndexOf(_currentInteractive.requirements[_currentInteractive.numberOfUses]))
+        if (_currentInteractive.orderedUsage && IsInInventory(_currentInteractive.requirements[_currentInteractive.numberOfUses])
+        && (_currentInteractive.itemSizeRestriction[_currentInteractive.numberOfUses] 
+        == _inventorySize[_inventory.IndexOf(_currentInteractive.requirements[_currentInteractive.numberOfUses])] || _currentInteractive.itemSizeRestriction.Length == 0) 
+        && _currentInteractive.limitedItemUsageAtOnce && scrollSlot == _inventory.IndexOf(_currentInteractive.requirements[_currentInteractive.numberOfUses]))
         {
             currentRequirement = _currentInteractive.requirements[_currentInteractive.numberOfUses];
 
@@ -257,7 +260,9 @@ public class PlayerInteract : MonoBehaviour
 
         for (int i = 0; i < _currentInteractive.requirements.Length; ++i)
         {
-            if (IsInInventory(_currentInteractive.requirements[i]) && _currentInteractive.limitedItemUsageAtOnce && (_currentInteractive.itemSizeRestriction.Length == 0 || _currentInteractive.itemSizeRestriction[i] == _inventorySize[_inventory.IndexOf(_currentInteractive.requirements[i])]) && scrollSlot == _inventory.IndexOf(_currentInteractive.requirements[i]))
+            if (IsInInventory(_currentInteractive.requirements[i]) && _currentInteractive.limitedItemUsageAtOnce && (_currentInteractive.itemSizeRestriction.Length == 0 
+            || _currentInteractive.itemSizeRestriction[i] == _inventorySize[_inventory.IndexOf(_currentInteractive.requirements[i])]) 
+            && scrollSlot == _inventory.IndexOf(_currentInteractive.requirements[i]))
             {
                 currentRequirement = _currentInteractive.requirements[i];
 
