@@ -40,22 +40,45 @@ public class PortalTeleporter : MonoBehaviour
 
                 if (Growth)
                 {
-                    
                     if (player.GetComponent<PlayerInteract>().playerSize == 0)
                     {
                         player.transform.localScale = player.transform.localScale + new Vector3(0, player.localScale.y, 0);
                         player.position = teleportPoint.position + positionOffset + portalOffsets + new Vector3(0, player.GetComponent<CharacterController>().height / 2, 0);
                         player.GetComponent<PlayerInteract>().playerSize += 1;
-                    }  
+
+                        for (int i = 0; i < player.GetComponent<PlayerInteract>()._inventorySize.Count; ++i)
+                        {
+                            if(player.GetComponent<PlayerInteract>()._inventorySize[i] < 1)
+                            {
+                                player.GetComponent<PlayerInteract>()._inventorySize[i] += 1;
+                            }
+                        }
+                    }
                     else if (player.GetComponent<PlayerInteract>().playerSize == -1)
                     {
                         player.transform.localScale = player.transform.localScale + new Vector3(0, player.localScale.y, 0);
                         player.position = teleportPoint.position + positionOffset + portalOffsets + new Vector3(0, player.GetComponent<CharacterController>().height / 4, 0);
                         player.GetComponent<PlayerInteract>().playerSize += 1;
+
+                        for (int i = 0; i < player.GetComponent<PlayerInteract>()._inventorySize.Count; ++i)
+                        {
+                            if(player.GetComponent<PlayerInteract>()._inventorySize[i] < 1)
+                            {
+                                player.GetComponent<PlayerInteract>()._inventorySize[i] += 1;
+                            }
+                        }
                     }
                     else
                     {
                         player.position = teleportPoint.position + positionOffset + portalOffsets;
+
+                        for (int i = 0; i < player.GetComponent<PlayerInteract>()._inventorySize.Count; ++i)
+                        {
+                            if(player.GetComponent<PlayerInteract>()._inventorySize[i] < 1)
+                            {
+                                player.GetComponent<PlayerInteract>()._inventorySize[i] += 1;
+                            }
+                        }
                     }
                     
                 }
@@ -67,16 +90,40 @@ public class PortalTeleporter : MonoBehaviour
                         player.transform.localScale = player.transform.localScale - new Vector3(0, player.localScale.y / 2, 0);
                         player.position = teleportPoint.position + positionOffset + portalOffsets - new Vector3(0, player.GetComponent<CharacterController>().height / 4, 0);
                         player.GetComponent<PlayerInteract>().playerSize -= 1;
-                    }                      
+
+                        for (int i = 0; i < player.GetComponent<PlayerInteract>()._inventorySize.Count; ++i)
+                        {
+                            if(player.GetComponent<PlayerInteract>()._inventorySize[i] > -1)
+                            {
+                                player.GetComponent<PlayerInteract>()._inventorySize[i] -= 1;
+                            }
+                        }
+                    }
                     else if (player.GetComponent<PlayerInteract>().playerSize == 1)
                     {
                         player.transform.localScale = player.transform.localScale - new Vector3(0, player.localScale.y / 2, 0);
                         player.position = teleportPoint.position + positionOffset + portalOffsets - new Vector3(0, player.GetComponent<CharacterController>().height / 2, 0);
                         player.GetComponent<PlayerInteract>().playerSize -= 1;
+
+                        for (int i = 0; i < player.GetComponent<PlayerInteract>()._inventorySize.Count; ++i)
+                        {
+                            if(player.GetComponent<PlayerInteract>()._inventorySize[i] > -1)
+                            {
+                                player.GetComponent<PlayerInteract>()._inventorySize[i] -= 1;
+                            }
+                        }
                     }
                     else
                     {
                         player.position = teleportPoint.position + positionOffset + portalOffsets;
+
+                        for (int i = 0; i < player.GetComponent<PlayerInteract>()._inventorySize.Count; ++i)
+                        {
+                            if(player.GetComponent<PlayerInteract>()._inventorySize[i] > -1)
+                            {
+                                player.GetComponent<PlayerInteract>()._inventorySize[i] -= 1;
+                            }
+                        }
                     }
                     
                 }
