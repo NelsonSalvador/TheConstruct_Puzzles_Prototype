@@ -6,15 +6,9 @@ public class Interactive : MonoBehaviour
     public InteractiveType type;
     public bool             isActive;
     //public bool             multiPickable;
-    public bool             consumesItem;
-    public bool             usedOnAnimation;
-    public bool             useWhenPicked;
-    public bool             interactWhenPicked;
-    public bool             orderedUsage;
-    public bool             limitedItemUsageAtOnce;
+    public bool             consumesItem, usedOnAnimation, useWhenPicked, interactWhenPicked, orderedUsage, limitedItemUsageAtOnce;
     public string[]         interactionTexts;
-    public int              requirementForSize = 0;
-    public int              maximumUses;
+    public int              requirementForSize, maximumUses;
 
     //public audio         interactiveDialogue;
     //public audio         interactionDialogue;
@@ -28,17 +22,13 @@ public class Interactive : MonoBehaviour
     public string          requirementText;
 
     private int            playerSize;
-    private int            _curInteractionTextId;
-    private int            audioAux  = 0;
+    private int            _curInteractionTextId, audioAux;
 
     [HideInInspector]
-    public int             numberOfUses = 0;
+    public int             numberOfUses;
 
-    public Interactive[]   activationChain;
-    public Interactive[]   deactivationChain;
-    public Interactive[]   interactionChain;
+    public Interactive[]   activationChain, deactivationChain, interactionChain, requirements;
     public Texture         icon;
-    public Interactive[]   requirements;
     public int[]           itemSizeRestriction;
     private AudioSource    interactionAudio;
     public  AudioClip[]    interactionAudioClips;
@@ -52,6 +42,10 @@ public class Interactive : MonoBehaviour
         interactionAudio = GetComponent<AudioSource>();
         Debug.Log(interactionAudio);
         _curInteractionTextId  = 0;
+        requirementForSize = 0;
+        audioAux  = 0;
+        numberOfUses = 0;
+
     }
 
     public string GetInteractionText()
