@@ -7,7 +7,15 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool pause = false;
     public GameObject PauseMenuCanvas;
+    public GameObject SettingsMenu;
+    public GameObject Inventory;
 
+    private Canvas canvas;
+
+    private void Start()
+    {
+        canvas = Inventory.GetComponent<Canvas>();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -38,12 +46,17 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
+        Debug.Log("Passou no Resume");
         FindObjectOfType<Player>().GetComponent<Player>().enabled = true;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        PauseMenuCanvas.SetActive(false);
-        //Time.timeScale = 1;
+        canvas.enabled = true;
         pause = false;
+        PauseMenuCanvas.SetActive(false);
+        SettingsMenu.SetActive(false);
+        
+        //Time.timeScale = 1;
+        
     }
 
     void Pause()
@@ -52,6 +65,7 @@ public class PauseMenu : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         PauseMenuCanvas.SetActive(true);
+        canvas.enabled = false;
         //Time.timeScale = 0;
         pause = true;
     }

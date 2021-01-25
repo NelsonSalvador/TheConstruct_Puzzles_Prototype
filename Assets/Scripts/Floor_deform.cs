@@ -12,19 +12,16 @@ public class Floor_deform : MonoBehaviour
     {
         float distance;
         distance = Vector3.Distance(Player.transform.position, transform.position);
-        if (distance > 5.0f)
+        if (distance > 5.0f && distance < 15.0f)
         {
-            
-            if (distance < 15.0f)
-            {
-                transform.localPosition = new Vector3(transform.localPosition.x, ((distance + 1.3f) / 3), transform.localPosition.z);
-                transform.localScale = new Vector3((15 - distance) * 0.1f, (15 - distance) * 0.1f, (15 - distance) * 0.1f);
-            }
-            else
-            {
-                transform.localScale = new Vector3(0, 0, 0);
-            }
+            transform.localPosition = new Vector3(transform.localPosition.x, ((distance + 1.3f) / 3), transform.localPosition.z);
+            transform.localScale = new Vector3((15 - distance) * 0.1f, (15 - distance) * 0.1f, (15 - distance) * 0.1f);
+
         }
-        
+        else if (distance > 15.0f)
+        {
+            transform.localScale = new Vector3(0, 0, 0);
+        }      
+
     }
 }
