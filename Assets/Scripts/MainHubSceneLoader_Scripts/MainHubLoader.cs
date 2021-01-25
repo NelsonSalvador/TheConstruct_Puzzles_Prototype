@@ -22,18 +22,21 @@ public class MainHubLoader : MonoBehaviour
     {
         if (MainHubData.level == 0)
         {
-            Subtitles.SetActive(true);
-            CinematicObjects.SetActive(true);
             CinematicTimeLine.Play();
         }
+
         if (MainHubData.level == 1)
         {
+            CinematicObjects.SetActive(false);
+            Subtitles.SetActive(false);
             Door1Box.SetActive(false);
             Door1.SetTrigger("Interact");
             Door2.SetTrigger("Interact");
             PressurePlate1.SetTrigger("Interact");
             TextDoor1.color = Color.green;
         }
+
+
     }
 
 }

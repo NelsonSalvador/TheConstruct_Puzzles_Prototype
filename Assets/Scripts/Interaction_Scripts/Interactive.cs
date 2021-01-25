@@ -110,6 +110,11 @@ public class Interactive : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
+        if (loadLevel == -1)
+        {
+            SceneManager.LoadScene("MainHub");
+        }
+
         if (_anim != null)
         {
             _anim.SetTrigger("Interact");
