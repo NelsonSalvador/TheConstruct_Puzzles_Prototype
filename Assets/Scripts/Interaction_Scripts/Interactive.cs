@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Interactive : MonoBehaviour
 {
+    public int loadLevel = 0;
     public enum InteractiveType {Pickable, Direct, Indirect};
     public InteractiveType type;
     public bool             isActive;
@@ -40,7 +42,6 @@ public class Interactive : MonoBehaviour
     {
         _anim = GetComponent<Animator>();
         interactionAudio = GetComponent<AudioSource>();
-        Debug.Log(interactionAudio);
         _curInteractionTextId  = 0;
         requirementForSize = 0;
         audioAux  = 0;
@@ -103,6 +104,11 @@ public class Interactive : MonoBehaviour
     public void Interact()
     {
         playerSize = FindObjectOfType<Player>().GetComponent<PlayerInteract>().playerSize;
+
+        if (loadLevel == 1)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
 
         if (_anim != null)
         {

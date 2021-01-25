@@ -46,7 +46,6 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
-        Debug.Log("Passou no Resume");
         FindObjectOfType<Player>().GetComponent<Player>().enabled = true;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
