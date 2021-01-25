@@ -1214,9 +1214,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c4dfe1cef1afba4c879ff0a4f2edf90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraB: {fileID: 0}
+  cameraB: {fileID: 1528730712}
   cameraMatB: {fileID: 2100000, guid: 0b25aaf996ec6844b8493e498b5aeb0f, type: 2}
-  cameraA: {fileID: 0}
+  cameraA: {fileID: 1405880458}
   cameraMatA: {fileID: 2100000, guid: 3eb1ae4143a108a45bf3472dc5e632e4, type: 2}
 --- !u!4 &142815465
 Transform:
@@ -6541,7 +6541,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2694981993969537470, guid: 8dd5f9d6d016d7d42a0edfbbdb0c9202, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.15
+      value: -0.329
       objectReference: {fileID: 0}
     - target: {fileID: 2694981993969537470, guid: 8dd5f9d6d016d7d42a0edfbbdb0c9202, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6549,7 +6549,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2694981993969537470, guid: 8dd5f9d6d016d7d42a0edfbbdb0c9202, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2694981993969537470, guid: 8dd5f9d6d016d7d42a0edfbbdb0c9202, type: 3}
       propertyPath: m_LocalRotation.x
@@ -9330,6 +9330,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 66fe1a0e0becc6f4bbc49896f2111756, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0b67fee087661941a6b851ede8cc5ed, type: 3}
+--- !u!20 &1405880458 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 709585828802428246, guid: c5bf48dbe9f237c4cbfc943d4dd9aae5, type: 3}
+  m_PrefabInstance: {fileID: 173199310}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1413706191
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10163,6 +10168,11 @@ Transform:
   m_Father: {fileID: 395641921}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &1528730712 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 709585829525246089, guid: c5bf48dbe9f237c4cbfc943d4dd9aae5, type: 3}
+  m_PrefabInstance: {fileID: 173199310}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1539108691
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13781,6 +13791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bcd606f60f9c040a2ddd9b99c13858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadLevel: 0
   type: 0
   isActive: 1
   consumesItem: 1
@@ -13798,8 +13809,8 @@ MonoBehaviour:
   activationChain: []
   deactivationChain: []
   interactionChain: []
-  icon: {fileID: 2800000, guid: 652a79b42f9d07c4f9448fb3135eb63c, type: 3}
   requirements: []
+  icon: {fileID: 2800000, guid: 652a79b42f9d07c4f9448fb3135eb63c, type: 3}
   itemSizeRestriction: 
   interactionAudioClips: []
   activationAudioClip: {fileID: 0}
@@ -14113,6 +14124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bcd606f60f9c040a2ddd9b99c13858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadLevel: 0
   type: 0
   isActive: 1
   consumesItem: 1
@@ -14130,8 +14142,8 @@ MonoBehaviour:
   activationChain: []
   deactivationChain: []
   interactionChain: []
-  icon: {fileID: 2800000, guid: 652a79b42f9d07c4f9448fb3135eb63c, type: 3}
   requirements: []
+  icon: {fileID: 2800000, guid: 652a79b42f9d07c4f9448fb3135eb63c, type: 3}
   itemSizeRestriction: 
   interactionAudioClips: []
   activationAudioClip: {fileID: 0}
@@ -14346,6 +14358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bcd606f60f9c040a2ddd9b99c13858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadLevel: 0
   type: 3
   isActive: 1
   consumesItem: 0
@@ -14362,8 +14375,8 @@ MonoBehaviour:
   activationChain: []
   deactivationChain: []
   interactionChain: []
-  icon: {fileID: 0}
   requirements: []
+  icon: {fileID: 0}
   itemSizeRestriction: 
   interactionAudioClips: []
   activationAudioClip: {fileID: 0}
@@ -14503,6 +14516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bcd606f60f9c040a2ddd9b99c13858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadLevel: 0
   type: 1
   isActive: 1
   consumesItem: 0
@@ -14522,10 +14536,10 @@ MonoBehaviour:
   interactionChain:
   - {fileID: 6224427288910772442}
   - {fileID: 0}
-  icon: {fileID: 0}
   requirements:
   - {fileID: 0}
   - {fileID: 0}
+  icon: {fileID: 0}
   itemSizeRestriction: 
   interactionAudioClips: []
   activationAudioClip: {fileID: 0}
@@ -14785,6 +14799,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bcd606f60f9c040a2ddd9b99c13858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadLevel: 0
   type: 3
   isActive: 1
   consumesItem: 0
@@ -14801,8 +14816,8 @@ MonoBehaviour:
   activationChain: []
   deactivationChain: []
   interactionChain: []
-  icon: {fileID: 0}
   requirements: []
+  icon: {fileID: 0}
   itemSizeRestriction: 
   interactionAudioClips: []
   activationAudioClip: {fileID: 0}
@@ -14862,6 +14877,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bcd606f60f9c040a2ddd9b99c13858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadLevel: 0
   type: 1
   isActive: 1
   consumesItem: 0
@@ -14881,10 +14897,10 @@ MonoBehaviour:
   interactionChain:
   - {fileID: 7206013198153276003}
   - {fileID: 0}
-  icon: {fileID: 0}
   requirements:
   - {fileID: 0}
   - {fileID: 0}
+  icon: {fileID: 0}
   itemSizeRestriction: 
   interactionAudioClips: []
   activationAudioClip: {fileID: 0}
