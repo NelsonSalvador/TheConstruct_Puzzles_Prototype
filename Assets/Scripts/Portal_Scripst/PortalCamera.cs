@@ -23,7 +23,7 @@ public class PortalCamera : MonoBehaviour
         Vector3 playerOffset = playerCamera.position - portal.position;
         if (normal)
         {
-            transform.position = otherPortal.position + playerOffset;
+            transform.position = otherPortal.position - playerOffset;
         }
         else if (Growth && (player.playerSize == -1 || player.playerSize == 0))
         {
