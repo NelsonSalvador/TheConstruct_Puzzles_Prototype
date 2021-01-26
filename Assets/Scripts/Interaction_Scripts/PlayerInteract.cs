@@ -58,7 +58,7 @@ public class PlayerInteract : MonoBehaviour
         {
             Interactive interactive = hitInfo.transform.GetComponent<Interactive>();
 
-            if (interactive == null)
+            if (interactive == null || interactive.type == Interactive.InteractiveType.Indirect)
                 ClearCurrentInteractive();
 
             else if (interactive != _currentInteractive)
