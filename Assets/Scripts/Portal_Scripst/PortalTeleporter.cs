@@ -2,21 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Teleports the player to a specific position and,
+/// transforms the player size if necessary;
+/// </summary>
 public class PortalTeleporter : MonoBehaviour
 {
-    public Transform player;
-    public Transform teleportPoint;
+    [SerializeField]
+    private Transform player;
+    [SerializeField]
+    private Transform teleportPoint;
 
-    public Transform renderPlane;
+    [SerializeField]
+    private Transform renderPlane;
 
-    public bool Growth = true;
+    [SerializeField]
+    private bool Growth = true;
 
     private bool playerIsOverlapping = false;
 
     // Update is called once per frame
     void Update()
     {
+        Teleport();
+    }
 
+    /// <summary>
+    /// Teleports the player.
+    /// </summary>
+    private void Teleport()
+    {
         if (playerIsOverlapping)
         {
             Vector3 portalToPlayer = player.position - transform.position;
@@ -30,7 +45,6 @@ public class PortalTeleporter : MonoBehaviour
 
                 float rotationDiff = -Quaternion.Angle(transform.rotation, teleportPoint.rotation);
                 Debug.Log(rotationDiff);
-                //rotationDiff += 180;
                 player.Rotate(Vector3.up, rotationDiff);
 
                 Vector3 positionOffset = Quaternion.Euler(0f, rotationDiff, 0f) * portalToPlayer;
@@ -48,7 +62,7 @@ public class PortalTeleporter : MonoBehaviour
 
                         for (int i = 0; i < player.GetComponent<PlayerInteract>()._inventorySize.Count; ++i)
                         {
-                            if(player.GetComponent<PlayerInteract>()._inventorySize[i] < 1)
+                            if (player.GetComponent<PlayerInteract>()._inventorySize[i] < 1)
                             {
                                 player.GetComponent<PlayerInteract>()._inventorySize[i] += 1;
                             }
@@ -62,7 +76,7 @@ public class PortalTeleporter : MonoBehaviour
 
                         for (int i = 0; i < player.GetComponent<PlayerInteract>()._inventorySize.Count; ++i)
                         {
-                            if(player.GetComponent<PlayerInteract>()._inventorySize[i] < 1)
+                            if (player.GetComponent<PlayerInteract>()._inventorySize[i] < 1)
                             {
                                 player.GetComponent<PlayerInteract>()._inventorySize[i] += 1;
                             }
@@ -74,17 +88,17 @@ public class PortalTeleporter : MonoBehaviour
 
                         for (int i = 0; i < player.GetComponent<PlayerInteract>()._inventorySize.Count; ++i)
                         {
-                            if(player.GetComponent<PlayerInteract>()._inventorySize[i] < 1)
+                            if (player.GetComponent<PlayerInteract>()._inventorySize[i] < 1)
                             {
                                 player.GetComponent<PlayerInteract>()._inventorySize[i] += 1;
                             }
                         }
                     }
-                    
+
                 }
                 else
                 {
-                    
+
                     if (player.GetComponent<PlayerInteract>().playerSize == 0)
                     {
                         player.transform.localScale = player.transform.localScale - new Vector3(0, player.localScale.y / 2, 0);
@@ -93,7 +107,7 @@ public class PortalTeleporter : MonoBehaviour
 
                         for (int i = 0; i < player.GetComponent<PlayerInteract>()._inventorySize.Count; ++i)
                         {
-                            if(player.GetComponent<PlayerInteract>()._inventorySize[i] > -1)
+                            if (player.GetComponent<PlayerInteract>()._inventorySize[i] > -1)
                             {
                                 player.GetComponent<PlayerInteract>()._inventorySize[i] -= 1;
                             }
@@ -107,7 +121,7 @@ public class PortalTeleporter : MonoBehaviour
 
                         for (int i = 0; i < player.GetComponent<PlayerInteract>()._inventorySize.Count; ++i)
                         {
-                            if(player.GetComponent<PlayerInteract>()._inventorySize[i] > -1)
+                            if (player.GetComponent<PlayerInteract>()._inventorySize[i] > -1)
                             {
                                 player.GetComponent<PlayerInteract>()._inventorySize[i] -= 1;
                             }
@@ -119,13 +133,13 @@ public class PortalTeleporter : MonoBehaviour
 
                         for (int i = 0; i < player.GetComponent<PlayerInteract>()._inventorySize.Count; ++i)
                         {
-                            if(player.GetComponent<PlayerInteract>()._inventorySize[i] > -1)
+                            if (player.GetComponent<PlayerInteract>()._inventorySize[i] > -1)
                             {
                                 player.GetComponent<PlayerInteract>()._inventorySize[i] -= 1;
                             }
                         }
                     }
-                    
+
                 }
 
                 cc.enabled = true;
@@ -133,6 +147,11 @@ public class PortalTeleporter : MonoBehaviour
             }
         }
     }
+
+    /// <summary>
+    /// Detects if player enters the portal.
+    /// </summary>
+    /// <param name="other">Player Collider</param>
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")

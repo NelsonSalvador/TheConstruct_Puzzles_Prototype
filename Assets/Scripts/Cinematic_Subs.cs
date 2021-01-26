@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Resposible for cinematic subtitles.
+/// </summary>
 public class Cinematic_Subs : MonoBehaviour
 {
-    public GameObject textox;
+    [SerializeField]
+    private GameObject textox;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,7 +18,10 @@ public class Cinematic_Subs : MonoBehaviour
     }
 
 
-
+    /// <summary>
+    /// Contains the subtitles lines.
+    /// </summary>
+    /// <returns>WaitForSeconds</returns>
     IEnumerator SubsSequence()
     {
         yield return new WaitForSeconds(3.58f);

@@ -2,16 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Sets up the correct cameras to the correct textures, with the correct widht and height
+/// for the growth tunnels.
+/// </summary>
 public class GrowthTunnelTextureSetUp : MonoBehaviour
 {
-    public Camera cameraB;
-    public Material cameraMatB;
-    public Camera cameraA;
-    public Material cameraMatA;
+    [SerializeField]
+    private Camera cameraB;
+    [SerializeField]
+    private Material cameraMatB;
+    [SerializeField]
+    private Camera cameraA;
+    [SerializeField]
+    private Material cameraMatA;
 
-    // Start is called before the first frame update
+    // Start is called before the first frame update.
     void Start()
     {
+        // Releases the camera target render textures.
         if(cameraB.targetTexture != null)
         {
             cameraB.targetTexture.Release();
@@ -20,16 +29,13 @@ public class GrowthTunnelTextureSetUp : MonoBehaviour
         {
             cameraA.targetTexture.Release();
         }
+
+        // Creates and signs the texture for Camera B.
         cameraB.targetTexture = new RenderTexture(Screen.width, Screen.height, 24);
         cameraMatB.mainTexture = cameraB.targetTexture;
 
+        // Creates and signs the texture for Camera A.
         cameraA.targetTexture = new RenderTexture(Screen.width, Screen.height, 24);
         cameraMatA.mainTexture = cameraA.targetTexture;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

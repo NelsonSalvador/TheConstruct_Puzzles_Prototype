@@ -2,25 +2,51 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Sets the correct positions for render Cameras.
+/// </summary>
 public class PortalCamera : MonoBehaviour
 {
-    public Transform playerCamera;
-    public Transform portal;
-    public Transform otherPortal;
+    [SerializeField]
+    private Transform playerCamera;
+    [SerializeField]
+    private Transform portal;
+    [SerializeField]
+    private Transform otherPortal;
 
-    public bool Growth = false;
-    public bool normal = false;
+    [SerializeField]
+    private bool Growth = false;
+    [SerializeField]
+    private bool normal = false;
+
     private PlayerInteract player;
 
+    // Start is called before the first frame update
     void Start()
     {
+        // Signs the variable player
         player = FindObjectOfType<Player>().GetComponent<PlayerInteract>();    
     }
 
     // Update is called once per frame
     void Update()
     {
+        UpdateCamera();
+    }
+
+    /// <summary>
+    /// Updates the camera position and rotation.
+    /// </summary>
+    private void UpdateCamera()
+    {
+        float angularDiff;
+        Quaternion portalRotatDiff;
+        Vector3 newCamDirection;
+
+        // Player offset from the portal.
         Vector3 playerOffset = playerCamera.position - portal.position;
+
+        // Updates the Camera position.
         if (normal)
         {
             transform.position = otherPortal.position - playerOffset;
@@ -38,14 +64,14 @@ public class PortalCamera : MonoBehaviour
             transform.position = otherPortal.position + playerOffset;
         }
 
-        
 
 
-        float angularDiff = Quaternion.Angle(portal.rotation, otherPortal.rotation);
+        // Calculates the new direction for the camera.
+        angularDiff = Quaternion.Angle(portal.rotation, otherPortal.rotation);
+        portalRotatDiff = Quaternion.AngleAxis(angularDiff, Vector3.up);
+        newCamDirection = portalRotatDiff * playerCamera.forward;
 
-        Quaternion portalRotatDiff = Quaternion.AngleAxis(angularDiff, Vector3.up);
-        Vector3 newCamDirection = portalRotatDiff * playerCamera.forward;
-
+        // Updates the camera rotation.
         transform.rotation = Quaternion.LookRotation(newCamDirection, Vector3.up);
     }
 }

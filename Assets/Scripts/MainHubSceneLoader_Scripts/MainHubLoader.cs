@@ -4,37 +4,68 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Playables;
 
+/// <summary>
+/// Contains all the objects that variate between levels and sets them 
+/// accordingly.
+/// </summary>
 public class MainHubLoader : MonoBehaviour
 {
-    public MainHubData MainHubData;
-    public GameObject Subtitles;
-    public GameObject CinematicObjects;
-    public PlayableDirector CinematicTimeLine;
+    [SerializeField]
+    private MainHubData MainHubData;
+    [SerializeField]
+    private GameObject Subtitles;
+    [SerializeField]
+    private GameObject CinematicObjects;
+    [SerializeField]
+    private PlayableDirector CinematicTimeLine;
 
     // Level 1 
-    public GameObject Door1Box;
-    public Animator Door1;
-    public Animator Door2;
-    public Animator PressurePlate1;
-    public TextMeshPro TextDoor1;
-    public Interactive ButtonPortals;
-    public GameObject ButtonInterior;
-    public Material ButtonActive;
+    [SerializeField]
+    private GameObject Door1Box;
+    [SerializeField]
+    private Animator Door1;
+    [SerializeField]
+    private Animator Door2;
+    [SerializeField]
+    private Animator PressurePlate1;
+    [SerializeField]
+    private TextMeshPro TextDoor1;
+    [SerializeField]
+    private Interactive ButtonPortals;
+    [SerializeField]
+    private GameObject ButtonInterior;
+    [SerializeField]
+    private Material ButtonActive;
 
     //Level 2
-    public Animator PortalsDoor;
-    public Animator Door3;
-    public TextMeshPro TextDoor2;
-    public Interactive ButtonLabyrints;
-    public GameObject ButtonLabInterior;
+    [SerializeField]
+    private Animator PortalsDoor;
+    [SerializeField]
+    private Animator Door3;
+    [SerializeField]
+    private TextMeshPro TextDoor2;
+    [SerializeField]
+    private Interactive ButtonLabyrints;
+    [SerializeField]
+    private GameObject ButtonLabInterior;
 
     //Level 3
-    public Animator LabyrintsDoor;
-    public Animator Door4;
-    public TextMeshPro TextDoor3;
+    [SerializeField]
+    private Animator LabyrintsDoor;
+    [SerializeField]
+    private Animator Door4;
+    [SerializeField]
+    private TextMeshPro TextDoor3;
 
     // Start is called before the first frame update
     void Start()
+    {
+        SetUpMainHub();
+    }
+    /// <summary>
+    /// Sets the main hub state depending on the current level.
+    /// </summary>
+    private void SetUpMainHub()
     {
         if (MainHubData.level == 0)
         {
@@ -71,7 +102,6 @@ public class MainHubLoader : MonoBehaviour
             //ButtonLabyrints.isActive = true;
             //ButtonLabInterior.GetComponent<MeshRenderer>().material = ButtonActive;
         }
-
     }
 
 }

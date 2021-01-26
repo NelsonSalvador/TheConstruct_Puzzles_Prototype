@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class LevelEnd : MonoBehaviour
 {
-    public MainHubData MainHubData;
-    public int CurrentLevel;
+    [SerializeField]
+    private MainHubData MainHubData;
+    [SerializeField]
+    private int CurrentLevel;
     // Start is called before the first frame update
     void Start()
     {
