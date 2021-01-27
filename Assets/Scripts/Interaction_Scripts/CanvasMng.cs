@@ -4,9 +4,7 @@ using UnityEngine.UI;
 public class CanvasMng : MonoBehaviour
 {
     public GameObject   interactionPanel;
-    public GameObject   dialoguePanel;
     public Text         interactionText;
-    public Text         dialogueText;
     public RawImage[]   inventoryIcons;
 
     void Start()
@@ -18,17 +16,11 @@ public class CanvasMng : MonoBehaviour
     {
         interactionPanel.SetActive(false);
     }
-    public void HideDialoguePanel()
-    {
-        dialoguePanel.SetActive(false);
-    }
-
-    //Legenda de interatividade
 
     /// <summary>
-    /// 
+    /// Shows interaction pannel.
     /// </summary>
-    /// <param name="textMessage"></param>
+    /// <param name="textMessage">Interaction text.</param>
     public void ShowInteractionPanel(string textMessage)
     {
         interactionText.text = textMessage;
@@ -36,16 +28,13 @@ public class CanvasMng : MonoBehaviour
         interactionPanel.SetActive(true);
     }
 
-    //Legenda de diálogo
-    //Coordenar no Player Interact com soundMng para o audioClip acontecer em simultâneo
-    public void ShowDialoguePanel(string textDialogue)
-    {
-        dialogueText.text = textDialogue;
-
-        dialoguePanel.SetActive(true);
-    }
-
     //Cria os icons para objetos no inventário
+
+    /// <summary>
+    /// Sets the inventory Icons.
+    /// </summary>
+    /// <param name="i"></param>
+    /// <param name="icon">Icon Texture</param>
     public void SetInventoryIcon(int i, Texture icon)
     {
         inventoryIcons[i].texture   = icon;
