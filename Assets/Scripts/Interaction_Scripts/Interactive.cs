@@ -2,7 +2,8 @@
 using UnityEngine.SceneManagement;
 
 /// <summary>
-/// 
+/// Defines object comportament when interacted with or activated.
+/// Changes interaction text displayed to the player
 /// </summary>
 public class Interactive : MonoBehaviour
 {
@@ -43,6 +44,11 @@ public class Interactive : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Sets the right interaction text to be displayed to the player depending
+    /// on how many times he interacted with this object
+    /// </summary>
+    /// <returns></returns>
     public string GetInteractionText()
     {
         if(interactionTexts.Length > 0)
@@ -55,7 +61,10 @@ public class Interactive : MonoBehaviour
         }
     }
 
-    //Só é chamada por interações que ativam outras
+    /// <summary>
+    /// Function called by interactions that activate other objects
+    /// Activates the chained object and plays the corresponding animation
+    /// </summary>
     public void Activate()
     {
         isActive = true;
@@ -69,6 +78,10 @@ public class Interactive : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// For every object that this interaction must activate, calls the function
+    /// that activates the objects
+    /// </summary>
     private void ProcessActivationChain()
     {
         if (activationChain != null)
@@ -78,6 +91,10 @@ public class Interactive : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Function called by interactions that deactivate other objects
+    /// Deactivates the chained object and plays the corresponding animation
+    /// </summary>
     public void Deactivate()
     {
         isActive = false;
@@ -86,6 +103,10 @@ public class Interactive : MonoBehaviour
             _anim.SetTrigger("Deactivate");
     }
 
+    /// <summary>
+    /// For every object that this interaction must deactivate, calls the
+    /// function that deactivates the objects
+    /// </summary>
     private void ProcessDeactivationChain()
     {
         if (deactivationChain != null)
@@ -95,6 +116,27 @@ public class Interactive : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// For every object that this interaction must interact with, calls the
+    /// function that interacts with the objects
+    /// </summary>
+    private void ProcessInteractionChain()
+    {
+        if (interactionChain != null)
+        {
+            for (int i = 0; i < interactionChain.Length; ++i)
+                interactionChain[i].Interact();
+        }
+    }
+
+    /// <summary>
+    /// Does the entire interaction
+    /// Triggers the corresponding animation and audio
+    /// Calls the functions that activate, deactivate and interact with chained
+    /// objects.
+    /// Changes interaction text that will be displayed for the next interaction
+    /// Loads new scene if the interactive changes the player scene
+    /// </summary>
     public void Interact()
     {
         playerSize = FindObjectOfType<Player>().GetComponent<PlayerInteract>().playerSize;
@@ -122,10 +164,9 @@ public class Interactive : MonoBehaviour
         if (_anim != null)
         {
             _anim.SetTrigger("Interact");
-            _anim.SetInteger("Size", playerSize);
         }
 
-        
+
         if(interactionAudio != null && interactionAudioClips != null)
         {
             interactionAudio.PlayOneShot(interactionAudioClips[audioAux]);
@@ -139,9 +180,6 @@ public class Interactive : MonoBehaviour
                 audioAux = 0;
             }
         }
-        
-
-        
 
         if (isActive)
         {
@@ -155,15 +193,6 @@ public class Interactive : MonoBehaviour
                 GetComponent<BoxCollider>().enabled = false;
             else if ((maximumUses != numberOfUses) && (interactionTexts.Length != 0))
                 _curInteractionTextId = (_curInteractionTextId + 1) % interactionTexts.Length;
-        }
-    }
-
-    private void ProcessInteractionChain()
-    {
-        if (interactionChain != null)
-        {
-            for (int i = 0; i < interactionChain.Length; ++i)
-                interactionChain[i].Interact();
         }
     }
 }
