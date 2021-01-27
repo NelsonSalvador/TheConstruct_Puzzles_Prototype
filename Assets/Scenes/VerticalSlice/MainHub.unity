@@ -4071,13 +4071,21 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 2.078
       objectReference: {fileID: 0}
+    - target: {fileID: 9010809749777318733, guid: e9a54e1986694e2499bb680ae04e96a9, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 13f31c8427fd865429e533cea99b63c2, type: 3}
     - target: {fileID: 9016702775260591373, guid: e9a54e1986694e2499bb680ae04e96a9, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9016702775260591373, guid: e9a54e1986694e2499bb680ae04e96a9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 10de6384af0c3b54e8166f9c3f936e88, type: 2}
     - target: {fileID: 9035480843511643209, guid: e9a54e1986694e2499bb680ae04e96a9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.52
+      value: 1.02
       objectReference: {fileID: 0}
     - target: {fileID: 9035480843511643209, guid: e9a54e1986694e2499bb680ae04e96a9, type: 3}
       propertyPath: m_LocalScale.x
@@ -4119,6 +4127,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9047749449328421291, guid: e9a54e1986694e2499bb680ae04e96a9, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 13f31c8427fd865429e533cea99b63c2, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9a54e1986694e2499bb680ae04e96a9, type: 3}
 --- !u!4 &549386673 stripped
@@ -6006,7 +6018,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 312252581371544607, guid: 15d4d493ebfa0c941a9f4b1f795aa04c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.289
+      value: 0.025
       objectReference: {fileID: 0}
     - target: {fileID: 312252581371544607, guid: 15d4d493ebfa0c941a9f4b1f795aa04c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6044,6 +6056,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2340528470870770370, guid: 15d4d493ebfa0c941a9f4b1f795aa04c, type: 3}
+      propertyPath: m_Center.y
+      value: 1.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 2827225567042846654, guid: 15d4d493ebfa0c941a9f4b1f795aa04c, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 13f31c8427fd865429e533cea99b63c2, type: 3}
+    - target: {fileID: 3761956589874114669, guid: 15d4d493ebfa0c941a9f4b1f795aa04c, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 13f31c8427fd865429e533cea99b63c2, type: 3}
+    - target: {fileID: 4090372763152862200, guid: 15d4d493ebfa0c941a9f4b1f795aa04c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 10de6384af0c3b54e8166f9c3f936e88, type: 2}
     - target: {fileID: 7317580279997188450, guid: 15d4d493ebfa0c941a9f4b1f795aa04c, type: 3}
       propertyPath: m_Name
       value: Pickupble_Box
@@ -8673,7 +8701,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1034434060}
-  m_LocalRotation: {x: 0.13872641, y: 0.6961455, z: -0.13989349, w: -0.6428873}
+  m_LocalRotation: {x: 0.13872641, y: 0.6961455, z: -0.13989349, w: 0.69033784}
   m_LocalPosition: {x: -3.352, y: 1.498, z: -0.034}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
