@@ -24,6 +24,11 @@ public class CanvasMng : MonoBehaviour
     }
 
     //Legenda de interatividade
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="textMessage"></param>
     public void ShowInteractionPanel(string textMessage)
     {
         interactionText.text = textMessage;

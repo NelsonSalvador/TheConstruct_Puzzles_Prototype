@@ -1,26 +1,20 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// 
+/// </summary>
 public class Interactive : MonoBehaviour
 {
     public int loadLevel = 0;
     public enum InteractiveType {Pickable, Direct, Indirect};
     public InteractiveType type;
     public bool             isActive;
-    //public bool             multiPickable;
     public bool             consumesItem, usedOnAnimation, useWhenPicked, interactWhenPicked, orderedUsage, limitedItemUsageAtOnce;
     public string[]         interactionTexts;
     public int              requirementForSize, maximumUses;
 
-    //public audio         interactiveDialogue;
-    //public audio         interactionDialogue;
-    //public string        interactiveDialogueText;
-    //public string        interactionDialogueText;
-    //public string        positionDialogue; diálogos que são triggered após o jogador pisar blocos interativos invisiveis no chão
-    //public int           dialogueTimer;
-    //public bool          playedInteractiveDialogue;
-    //public bool          playedInteractionDialogue;
-    //public bool          playedPositionDialogue;
+
     public string          requirementText;
 
     private int            playerSize;
