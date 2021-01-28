@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Controls the pause menu buttons.
+/// </summary>
 public class PauseMenu : MonoBehaviour
 {
     public static bool pause = false;
@@ -12,6 +15,7 @@ public class PauseMenu : MonoBehaviour
 
     private Canvas canvas;
 
+    // Start is called before the first frame update
     private void Start()
     {
         canvas = Inventory.GetComponent<Canvas>();
@@ -32,6 +36,9 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Loads the main menu.
+    /// </summary>
     public void MainMenu()
     {
         Cursor.visible = true;
@@ -39,14 +46,21 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - SceneManager.GetActiveScene().buildIndex);
     }
 
+    /// <summary>
+    /// Quits the application.
+    /// </summary>
     public void Quit()
     {
         Application.Quit();
     }
 
+    /// <summary>
+    /// Resumes the game.
+    /// </summary>
     public void Resume()
     {
-        FindObjectOfType<Player>().GetComponent<Player>().enabled = true;
+        if (FindObjectOfType<Player>() != null)
+            FindObjectOfType<Player>().GetComponent<Player>().enabled = true;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         canvas.enabled = true;
@@ -58,9 +72,13 @@ public class PauseMenu : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Pauses the game.
+    /// </summary>
     void Pause()
     {
-        FindObjectOfType<Player>().GetComponent<Player>().enabled = false;
+        if (FindObjectOfType<Player>() != null)
+            FindObjectOfType<Player>().GetComponent<Player>().enabled = false;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         PauseMenuCanvas.SetActive(true);

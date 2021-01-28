@@ -1773,7 +1773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd5766675bc2ffa44ab5eefcb2e6c103, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainHubData: {fileID: 11400000, guid: febfe859ef2a077438d38dc6f112fa81, type: 2}
+  MainHubData: {fileID: 11400000, guid: 0db8ffd2f34aef649825b4e32ff4fb31, type: 2}
   CurrentLevel: 1
 --- !u!4 &160009439
 Transform:

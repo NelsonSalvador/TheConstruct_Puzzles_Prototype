@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Controls the player movement.
+/// </summary>
 public class Player : MonoBehaviour
 {
     private const float FORWARD_ACCELERATION = 10.0f;
@@ -32,6 +35,9 @@ public class Player : MonoBehaviour
         HideCursor();
     }
 
+    /// <summary>
+    /// Hides and locks cursor.
+    /// </summary>
     private void HideCursor()
     {
         Cursor.visible = false;
@@ -45,6 +51,9 @@ public class Player : MonoBehaviour
         UpdateSprint();
     }
 
+    /// <summary>
+    /// Updates camera rotation in X.
+    /// </summary>
     private void UpdateHeadTilt()
     {
         Vector3 cameraRotation = _cameraTransform.localEulerAngles;
@@ -59,6 +68,9 @@ public class Player : MonoBehaviour
         _cameraTransform.localEulerAngles = cameraRotation;
     }
 
+    /// <summary>
+    /// Updates Camera rotation in Y.
+    /// </summary>
     private void UpdateRotation()
     {
         float rotation = Input.GetAxis("Mouse X") * ANGULAR_VELOCITY_FACTOR;
@@ -66,7 +78,9 @@ public class Player : MonoBehaviour
         transform.Rotate(0, rotation, 0);
     }
 
-
+    /// <summary>
+    /// Checks if player is sprinting.
+    /// </summary>
     private void UpdateSprint()
     {
         if (Input.GetButton("Sprint"))
@@ -82,6 +96,9 @@ public class Player : MonoBehaviour
         UpdatePosition();
     }
 
+    /// <summary>
+    /// Controls player acceleration.
+    /// </summary>
     private void UpdateAcceleration()
     {
         _acceleration.z = Input.GetAxis("Forward");
@@ -95,6 +112,9 @@ public class Player : MonoBehaviour
             _acceleration.y = -GRAVITY_ACCELERATION;
     }
 
+    /// <summary>
+    /// Updates player velocity.
+    /// </summary>
     private void UpdateVelocity()
     {
         _velocity += _acceleration * Time.fixedDeltaTime;
@@ -117,6 +137,9 @@ public class Player : MonoBehaviour
         _velocity.y = (_acceleration.y == 0f) ? -0.1f : _velocity.y;
     }
 
+    /// <summary>
+    /// Updates player position.
+    /// </summary>
     private void UpdatePosition()
     {
         Vector3 motion = _velocity * Time.fixedDeltaTime;
