@@ -18,6 +18,12 @@ public class MainHubLoader : MonoBehaviour
     private GameObject CinematicObjects;
     [SerializeField]
     private PlayableDirector CinematicTimeLine;
+    [SerializeField]
+    private GameObject HologramProjector;
+    [SerializeField]
+    private Animator WallExplosion;
+    [SerializeField]
+    private GameObject Tutorial;
 
     // Level 1 
     [SerializeField]
@@ -74,7 +80,10 @@ public class MainHubLoader : MonoBehaviour
 
         if (MainHubData.level >= 1)
         {
+            WallExplosion.SetBool("Rotate", true);
+            Tutorial.SetActive(false);
             CinematicObjects.SetActive(false);
+            HologramProjector.SetActive(false);
             Subtitles.SetActive(false);
             Door1Box.SetActive(false);
             Door1.SetTrigger("Interact");
