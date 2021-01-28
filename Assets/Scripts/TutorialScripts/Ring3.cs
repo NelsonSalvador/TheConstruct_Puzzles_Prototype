@@ -2,16 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Third tutorial ring behaviour.
+/// </summary>
 public class Ring3 : MonoBehaviour
 {
     [SerializeField]
     private MeshRenderer boxTriger;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()

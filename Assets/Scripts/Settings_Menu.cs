@@ -76,7 +76,7 @@ public class Settings_Menu : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Sets the screen to fullscreen.
     /// </summary>
     /// <param name="isFullscreen">true is fullscrren is checked.</param>
     public void SetFullscreen (bool isFullscreen)

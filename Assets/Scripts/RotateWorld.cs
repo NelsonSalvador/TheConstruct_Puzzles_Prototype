@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Rotates the world for the gravity labyrints.
+/// </summary>
 public class RotateWorld : MonoBehaviour
 {
     public GameObject _player;
@@ -35,6 +38,9 @@ public class RotateWorld : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Updates the pivot position.
+    /// </summary>
     private void UpdatePivot()
     {
         playerPos = new Vector3(_player.transform.position.x,
@@ -44,6 +50,9 @@ public class RotateWorld : MonoBehaviour
         _pivot.position = playerPos;
     }
 
+    /// <summary>
+    /// Rotates the world in the correct axis and angle.
+    /// </summary>
     private void Rotate()
     {
         _children.transform.SetParent(_pivot);
@@ -84,6 +93,10 @@ public class RotateWorld : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Stops the rotation at the correct angle.
+    /// </summary>
+    /// <param name="rotation">Angle and axis rotation.</param>
     private void StopRotation(Vector3 rotation)
     {
         rotating = false;
