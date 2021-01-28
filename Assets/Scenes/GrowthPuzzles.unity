@@ -2080,6 +2080,10 @@ PrefabInstance:
       propertyPath: m_CullingMask.m_Bits
       value: 1303
       objectReference: {fileID: 0}
+    - target: {fileID: 709585828802428246, guid: c5bf48dbe9f237c4cbfc943d4dd9aae5, type: 3}
+      propertyPath: m_RenderingPath
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 709585828802428247, guid: c5bf48dbe9f237c4cbfc943d4dd9aae5, type: 3}
       propertyPath: playerCamera
       value: 
@@ -2087,6 +2091,10 @@ PrefabInstance:
     - target: {fileID: 709585829525246089, guid: c5bf48dbe9f237c4cbfc943d4dd9aae5, type: 3}
       propertyPath: m_CullingMask.m_Bits
       value: 1303
+      objectReference: {fileID: 0}
+    - target: {fileID: 709585829525246089, guid: c5bf48dbe9f237c4cbfc943d4dd9aae5, type: 3}
+      propertyPath: m_RenderingPath
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 709585829525246090, guid: c5bf48dbe9f237c4cbfc943d4dd9aae5, type: 3}
       propertyPath: playerCamera
@@ -2483,6 +2491,10 @@ PrefabInstance:
       propertyPath: m_CullingMask.m_Bits
       value: 1303
       objectReference: {fileID: 0}
+    - target: {fileID: 709585828802428246, guid: c5bf48dbe9f237c4cbfc943d4dd9aae5, type: 3}
+      propertyPath: m_RenderingPath
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 709585828802428247, guid: c5bf48dbe9f237c4cbfc943d4dd9aae5, type: 3}
       propertyPath: playerCamera
       value: 
@@ -2490,6 +2502,10 @@ PrefabInstance:
     - target: {fileID: 709585829525246089, guid: c5bf48dbe9f237c4cbfc943d4dd9aae5, type: 3}
       propertyPath: m_CullingMask.m_Bits
       value: 1303
+      objectReference: {fileID: 0}
+    - target: {fileID: 709585829525246089, guid: c5bf48dbe9f237c4cbfc943d4dd9aae5, type: 3}
+      propertyPath: m_RenderingPath
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 709585829525246090, guid: c5bf48dbe9f237c4cbfc943d4dd9aae5, type: 3}
       propertyPath: playerCamera
