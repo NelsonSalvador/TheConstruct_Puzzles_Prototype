@@ -11,6 +11,8 @@ public class StairTrigger : MonoBehaviour
 
     public GameObject _pivot;
 
+    public AudioSource rotateSound;
+
     [HideInInspector]
     public int _direction;
     private bool _isRunning = false;
@@ -21,12 +23,10 @@ public class StairTrigger : MonoBehaviour
     RaycastHit alongX;
 
     new Vector3 renderer;
-
     private void Start()
     {
-        
+        rotateSound = this.gameObject.GetComponent<AudioSource>();
     }
-
 
     private void OnTriggerEnter(Collider other)
     {
@@ -34,7 +34,7 @@ public class StairTrigger : MonoBehaviour
         {
             GameObject.FindGameObjectWithTag("World").GetComponent<RotateWorld>().rotating = true;
             GameObject.FindGameObjectWithTag("World").GetComponent<RotateWorld>()._stairsVariables = this.gameObject;
-            Debug.Log("Entrou no collider");
+            rotateSound.Play();
             StartCoroutine(Wait());
         }
         
@@ -64,7 +64,6 @@ public class StairTrigger : MonoBehaviour
             , transform.TransformDirection(Vector3.right)
             , out alongZ, 2f, 1 << LayerMask.NameToLayer("Player")) && !_isRunning)
         {
-            Debug.Log("Entrou Azul");
             
             if (_isX)
             {
@@ -95,7 +94,6 @@ public class StairTrigger : MonoBehaviour
             , out alongX, 6f, 1 << LayerMask.NameToLayer("Player")) && !_isRunning)
 
         {
-            Debug.Log("Entrou Verde");
 
             if (_isX)
             {
@@ -119,15 +117,6 @@ public class StairTrigger : MonoBehaviour
         
            
         }
-        Debug.DrawRay(renderer + transform.TransformDirection(Vector3.up)+
-            (transform.TransformDirection(Vector3.left) * 2) +
-            (transform.TransformDirection(Vector3.forward) * 0.5f),
-            transform.TransformDirection(Vector3.right), Color.red);
-
-        Debug.DrawRay(renderer +  transform.TransformDirection(Vector3.forward)
-            + (transform.TransformDirection(Vector3.left) * 1.5f)
-            + (transform.TransformDirection(Vector3.up) * 0.5f)
-            , transform.TransformDirection(Vector3.right), Color.blue);
     }
 
     private IEnumerator Wait()
