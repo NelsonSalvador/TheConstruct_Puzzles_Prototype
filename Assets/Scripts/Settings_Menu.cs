@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
+/// <summary>
+/// Controls the settings menu options.
+/// </summary>
 public class Settings_Menu : MonoBehaviour
 {
     public AudioMixer audioMixer;
@@ -44,22 +47,38 @@ public class Settings_Menu : MonoBehaviour
         volumeSlider.value = temp;
     }
 
+    /// <summary>
+    /// Sets screen resolution.
+    /// </summary>
+    /// <param name="resolutionIndex"></param>
     public void SetResolution (int resolutionIndex)
     {
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
+    /// <summary>
+    /// Sets game volume.
+    /// </summary>
+    /// <param name="volume">Game volume to set.</param>
     public void SetVolume (float volume)
     {
         audioMixer.SetFloat("Volume", volume);
     }
 
+    /// <summary>
+    /// Sets Quality of the game.
+    /// </summary>
+    /// <param name="qualityIndex">Quality to set.</param>
     public void SetQuality ( int qualityIndex)
     {
         QualitySettings.SetQualityLevel(qualityIndex);
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="isFullscreen">true is fullscrren is checked.</param>
     public void SetFullscreen (bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;
