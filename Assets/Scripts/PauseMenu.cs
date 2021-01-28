@@ -59,7 +59,8 @@ public class PauseMenu : MonoBehaviour
     /// </summary>
     public void Resume()
     {
-        FindObjectOfType<Player>().GetComponent<Player>().enabled = true;
+        if (FindObjectOfType<Player>() != null)
+            FindObjectOfType<Player>().GetComponent<Player>().enabled = true;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         canvas.enabled = true;
@@ -76,7 +77,8 @@ public class PauseMenu : MonoBehaviour
     /// </summary>
     void Pause()
     {
-        FindObjectOfType<Player>().GetComponent<Player>().enabled = false;
+        if (FindObjectOfType<Player>() != null)
+            FindObjectOfType<Player>().GetComponent<Player>().enabled = false;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         PauseMenuCanvas.SetActive(true);
