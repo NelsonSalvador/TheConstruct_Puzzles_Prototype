@@ -13951,6 +13951,20 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1172554097}
   m_Enabled: 1
+--- !u!114 &1172554106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172554097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4304fd8ff1178940b2b73db9315a94a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadLevelCheats: -1
+  MainHubData: {fileID: 11400000, guid: 0db8ffd2f34aef649825b4e32ff4fb31, type: 2}
 --- !u!65 &1173129699
 BoxCollider:
   m_ObjectHideFlags: 0
