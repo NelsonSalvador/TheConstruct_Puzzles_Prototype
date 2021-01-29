@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 /// <summary>
 /// Defines object comportament when interacted with or activated.
@@ -7,6 +8,9 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class Interactive : MonoBehaviour
 {
+    [SerializeField]
+    private Animator sceneTransition;
+
     public int loadLevel = 0;
     public enum InteractiveType {Pickable, Direct, Indirect};
     public InteractiveType type;
@@ -143,22 +147,22 @@ public class Interactive : MonoBehaviour
 
         if (loadLevel == 1)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            StartCoroutine(LoadLevel(2));
         }
 
         if (loadLevel == -1)
         {
-            SceneManager.LoadScene("MainHub");
+            StartCoroutine(LoadLevel(1));
         }
 
         if (loadLevel == 2)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
+            StartCoroutine(LoadLevel(3));
         }
 
         if (loadLevel == 3)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+            StartCoroutine(LoadLevel(4));
         }
 
         if (_anim != null)
@@ -194,5 +198,15 @@ public class Interactive : MonoBehaviour
             else if ((maximumUses != numberOfUses) && (interactionTexts.Length != 0))
                 _curInteractionTextId = (_curInteractionTextId + 1) % interactionTexts.Length;
         }
+    }
+
+    IEnumerator LoadLevel(int levelIndex)
+    {
+        // Play animation.
+        sceneTransition.SetTrigger("Start");
+        // Wait.
+        yield return new WaitForSeconds(1.5f);
+        // Load scene.
+        SceneManager.LoadScene(levelIndex);
     }
 }
