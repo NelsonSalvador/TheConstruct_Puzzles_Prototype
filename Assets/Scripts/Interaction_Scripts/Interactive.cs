@@ -165,6 +165,11 @@ public class Interactive : MonoBehaviour
             StartCoroutine(LoadLevel(4));
         }
 
+        if (loadLevel == 4)
+        {
+            StartCoroutine(LoadLevel(5));
+        }
+
         if (_anim != null)
         {
             _anim.SetTrigger("Interact");
@@ -200,6 +205,11 @@ public class Interactive : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Plays fade out animation and loads the next scene.
+    /// </summary>
+    /// <param name="levelIndex">Next scene index.</param>
+    /// <returns></returns>
     IEnumerator LoadLevel(int levelIndex)
     {
         // Play animation.

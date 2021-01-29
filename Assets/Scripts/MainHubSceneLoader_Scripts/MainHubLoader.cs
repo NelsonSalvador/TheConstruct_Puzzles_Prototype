@@ -123,8 +123,6 @@ public class MainHubLoader : MonoBehaviour
             LabyrintsDoor.SetTrigger("Interact");
             Door4.SetTrigger("Interact");
             TextDoor3.color = Color.green;
-            //ButtonLabyrints.isActive = true;
-            //ButtonLabInterior.GetComponent<MeshRenderer>().material = ButtonActive;
         }
     }
 

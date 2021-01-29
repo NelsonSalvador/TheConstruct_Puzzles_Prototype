@@ -30,11 +30,11 @@ public class GrowthTunnelTextureSetUp : MonoBehaviour
             cameraA.targetTexture.Release();
         }
 
-        // Creates and signs the texture for Camera B.
+        // Creates and assigns the texture for Camera B.
         cameraB.targetTexture = new RenderTexture(Screen.width, Screen.height, 24);
         cameraMatB.mainTexture = cameraB.targetTexture;
 
-        // Creates and signs the texture for Camera A.
+        // Creates and assigns the texture for Camera A.
         cameraA.targetTexture = new RenderTexture(Screen.width, Screen.height, 24);
         cameraMatA.mainTexture = cameraA.targetTexture;
     }

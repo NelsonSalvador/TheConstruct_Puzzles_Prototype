@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Portals.unity
     guid: 5aa9e68c70dee9b4fb111a80004b2816
+  - enabled: 1
+    path: Assets/Scenes/JoaoSceneLaby2.unity
+    guid: eaeeb6b4e9c8ea6418e227122bc4ace4
   m_configObjects: {}

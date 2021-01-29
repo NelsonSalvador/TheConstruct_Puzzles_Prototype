@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Playables;
+
 /// <summary>
 /// Scriptable object that contains the current level.
 /// </summary>

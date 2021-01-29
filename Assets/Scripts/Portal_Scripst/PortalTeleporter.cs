@@ -151,7 +151,7 @@ public class PortalTeleporter : MonoBehaviour
     /// <summary>
     /// Detects if player enters the portal.
     /// </summary>
-    /// <param name="other">Player Collider</param>
+    /// <param name="other">Player Collider.</param>
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")

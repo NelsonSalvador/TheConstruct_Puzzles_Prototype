@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 
+/// Trigers the world rotation and set the variables.
 /// </summary>
 public class StairTrigger : MonoBehaviour
 {
@@ -31,6 +31,10 @@ public class StairTrigger : MonoBehaviour
         rotateSound = this.gameObject.GetComponent<AudioSource>();
     }
 
+    /// <summary>
+    /// Triggers when player enters.
+    /// </summary>
+    /// <param name="other">Collider.</param>
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player" && !_isRunning)
@@ -43,6 +47,9 @@ public class StairTrigger : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Sets the variables for the rotation. 
+    /// </summary>
     private void Update()
     {
         renderer = this.gameObject.GetComponent<Renderer>().bounds.center;
@@ -122,6 +129,10 @@ public class StairTrigger : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Waits for the rotation to stop.
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator Wait()
     {
         _isRunning = true;

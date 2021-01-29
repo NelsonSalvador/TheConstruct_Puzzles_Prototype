@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Sets the MainHubData Scriptable Object with the correct Level.
+/// </summary>
 public class LevelEnd : MonoBehaviour
 {
     [SerializeField]
