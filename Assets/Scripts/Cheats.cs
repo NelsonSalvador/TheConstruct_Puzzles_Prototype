@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Cheats : MonoBehaviour
 {
-    public int loadLevel = 0;
+    public int loadLevelCheats = 0;
     private CharacterController cc;
 
     // Start is called before the first frame update
@@ -16,7 +16,7 @@ public class Cheats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (loadLevel == 1)
+        if (loadLevelCheats == 1)
         {
             if (Input.GetKeyDown("1"))
             {
@@ -33,9 +33,9 @@ public class Cheats : MonoBehaviour
             }
         }
 
-        if (loadLevel == -1)
+        if (loadLevelCheats == -1)
         {
-            if (Input.GetKeyDown(KeyCode.Keypad1))
+            if (Input.GetKeyDown("1"))
             {
                 cc.enabled = false;
                 transform.position = new Vector3 (-18,0.9f, 0);
@@ -43,12 +43,25 @@ public class Cheats : MonoBehaviour
             }
         }
 
-        if (loadLevel == 2)
+        if (loadLevelCheats == 2)
         {
-            if (Input.GetKeyDown(KeyCode.Keypad1))
+            if (Input.GetKeyDown("1"))
             {
                 cc.enabled = false;
-                transform.position = new Vector3 (-18,0.9f, 0);
+                transform.position = new Vector3 (-8,3, 8);
+                cc.enabled = true;
+            }
+
+            if (Input.GetKeyDown("2"))
+            {
+                cc.enabled = false;
+                transform.position = new Vector3 (-16,20, 70);
+                cc.enabled = true;
+            }
+            if (Input.GetKeyDown("3"))
+            {
+                cc.enabled = false;
+                transform.position = new Vector3 (-30,10, 88);
                 cc.enabled = true;
             }
         }
