@@ -173,6 +173,8 @@ public class Interactive : MonoBehaviour
         if (loadLevel == 5)
         {
             StartCoroutine(LoadLevel(6));
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
 
         if (_anim != null)

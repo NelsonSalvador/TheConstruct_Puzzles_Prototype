@@ -18,6 +18,14 @@ public class Main_Menu : MonoBehaviour
     }
 
     /// <summary>
+    /// Loads the Main Menu.
+    /// </summary>
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    /// <summary>
     /// Quits the game.
     /// </summary>
     public void QuitGame()
