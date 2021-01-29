@@ -11,6 +11,12 @@ using UnityEngine.Playables;
 public class MainHubLoader : MonoBehaviour
 {
     [SerializeField]
+    private GameObject Player;
+    [SerializeField]
+    private GameObject SkipCinematicTextPannel;
+    [SerializeField]
+    private GameObject InventoryPannel;
+    [SerializeField]
     private MainHubData MainHubData;
     [SerializeField]
     private GameObject Subtitles;
@@ -24,6 +30,7 @@ public class MainHubLoader : MonoBehaviour
     private Animator WallExplosion;
     [SerializeField]
     private GameObject Tutorial;
+    
 
     // Level 1 
     [SerializeField]
@@ -68,6 +75,13 @@ public class MainHubLoader : MonoBehaviour
     {
         SetUpMainHub();
     }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && (MainHubData.level == 0))
+        {
+            SkipCinematic();
+        }
+    }
     /// <summary>
     /// Sets the main hub state depending on the current level.
     /// </summary>
@@ -80,6 +94,7 @@ public class MainHubLoader : MonoBehaviour
 
         if (MainHubData.level >= 1)
         {
+            SkipCinematicTextPannel.SetActive(false);
             WallExplosion.SetBool("Rotate", true);
             Tutorial.SetActive(false);
             CinematicObjects.SetActive(false);
@@ -111,6 +126,22 @@ public class MainHubLoader : MonoBehaviour
             //ButtonLabyrints.isActive = true;
             //ButtonLabInterior.GetComponent<MeshRenderer>().material = ButtonActive;
         }
+    }
+
+    /// <summary>
+    /// Skips Cinematic.
+    /// </summary>
+    private void SkipCinematic()
+    {
+        CinematicTimeLine.Stop();
+        WallExplosion.SetBool("Rotate", true);
+        HologramProjector.SetActive(false);
+        Tutorial.SetActive(true);
+        Subtitles.SetActive(false);
+        Player.SetActive(true);
+        CinematicObjects.SetActive(false);
+        InventoryPannel.SetActive(true);
+        SkipCinematicTextPannel.SetActive(false);
     }
 
 }
