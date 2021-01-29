@@ -3693,7 +3693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4304fd8ff1178940b2b73db9315a94a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadLevel: 1
+  loadLevelCheats: 1
 --- !u!4 &363106842 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 469248, guid: 3845c7234a0ed4843ba4e38e2404f54d, type: 3}
