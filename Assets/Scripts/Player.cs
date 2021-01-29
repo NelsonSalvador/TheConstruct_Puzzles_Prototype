@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     private const float BACKWARD_ACCELERATION = 10.0f;
     private const float STRAFE_ACCELERATION = 10.0f;
     private const float JUMP_ACCELERATION = 300.0f;
-    private const float GRAVITY_ACCELERATION = 10.0f;
+    private const float GRAVITY_ACCELERATION = 1.0f;
     private const float MAX_FORWARD_VELOCITY = 4.0f;
     private const float MAX_BACKWARD_VELOCITY = 2.0f;
     private const float MAX_STRAFE_VELOCITY = 3.0f;
@@ -117,15 +117,15 @@ public class Player : MonoBehaviour
     /// </summary>
     private void UpdateVelocity()
     {
-        _velocity += _acceleration * Time.fixedDeltaTime;
+        _velocity += _acceleration;
 
         if (_sprint)
         {
-            _velocity.z = (_acceleration.z == 0f || _velocity.z * _acceleration.z < 0) ? 0f : Mathf.Clamp(_velocity.z, -MAX_BACKWARD_VELOCITY, MAX_FORWARD_VELOCITY * 2);
+            _velocity.z = (_acceleration.z == 0f || _velocity.z * _acceleration.z < 0) ? 0f : Mathf.Clamp(_velocity.z, -MAX_BACKWARD_VELOCITY, MAX_FORWARD_VELOCITY * 2.5f);
             _sprint = false;
         }
         else
-            _velocity.z = (_acceleration.z == 0f || _velocity.z * _acceleration.z < 0) ? 0f : Mathf.Clamp(_velocity.z, -MAX_BACKWARD_VELOCITY, MAX_FORWARD_VELOCITY);
+            _velocity.z = (_acceleration.z == 0f || _velocity.z * _acceleration.z < 0) ? 0f : Mathf.Clamp(_velocity.z, -MAX_BACKWARD_VELOCITY, MAX_FORWARD_VELOCITY * 1.5f);
 
         _velocity.x = (_acceleration.x == 0f || _velocity.x * _acceleration.x < 0) ? 0f : Mathf.Clamp(_velocity.x, -MAX_STRAFE_VELOCITY, MAX_STRAFE_VELOCITY);
 
