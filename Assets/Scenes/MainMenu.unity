@@ -210,6 +210,10 @@ PrefabInstance:
       propertyPath: volumeSlider
       value: 
       objectReference: {fileID: 333742957}
+    - target: {fileID: 7791052127467998835, guid: a13a723e08f4fde45aa6b0b32c0a3289, type: 3}
+      propertyPath: fullScreen
+      value: 
+      objectReference: {fileID: 1122732483}
     - target: {fileID: 7791052127467998836, guid: a13a723e08f4fde45aa6b0b32c0a3289, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1295,6 +1299,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 810594925}
   m_CullTransparentMesh: 0
+--- !u!114 &1122732483 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7791052127176943267, guid: a13a723e08f4fde45aa6b0b32c0a3289, type: 3}
+  m_PrefabInstance: {fileID: 18532714}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1139475901
 GameObject:
   m_ObjectHideFlags: 0
