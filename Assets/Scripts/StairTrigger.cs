@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 
+/// </summary>
 public class StairTrigger : MonoBehaviour
 {
     [HideInInspector]
@@ -86,7 +89,7 @@ public class StairTrigger : MonoBehaviour
            
 
         }
-        else if (Physics.Raycast(renderer
+        else if (Physics.Raycast(renderer 
             + (transform.TransformDirection(Vector3.up) * 1.5f)
             + (transform.TransformDirection(Vector3.left) * 2)
             + (transform.TransformDirection(Vector3.up) * 0.5f)

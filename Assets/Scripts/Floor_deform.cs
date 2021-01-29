@@ -39,12 +39,4 @@ public class Floor_deform : MonoBehaviour
             transform.localScale = new Vector3(0, 0, 0);
         }
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            Debug.Log("ENtrou");
-        }
-    }
 }

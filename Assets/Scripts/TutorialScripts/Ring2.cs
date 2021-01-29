@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Second Tutorial ring behaviour.
+/// </summary>
 public class Ring2 : MonoBehaviour
 {
     [SerializeField]

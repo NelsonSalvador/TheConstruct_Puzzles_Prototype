@@ -10,21 +10,16 @@ using UnityEngine.SceneManagement;
 public class Main_Menu : MonoBehaviour
 {
     /// <summary>
-    /// Loads the first scene ...
+    /// Loads the Main Hub.
     /// </summary>
-    public void PlayGrowthPuzzles()
+    public void Play()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-    public void PlayLabyrintPuzzles()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
-    }
-    public void PlayPortalsPuzzles()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
-    }
 
+    /// <summary>
+    /// Quits the game.
+    /// </summary>
     public void QuitGame()
     {
         Application.Quit();
