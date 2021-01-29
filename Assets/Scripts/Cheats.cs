@@ -65,5 +65,28 @@ public class Cheats : MonoBehaviour
                 cc.enabled = true;
             }
         }
+
+        if (loadLevelCheats == 3)
+        {
+            if (Input.GetKeyDown("1"))
+            {
+                cc.enabled = false;
+                transform.position = new Vector3 (-111,12,139);
+                cc.enabled = true;
+            }
+
+            if (Input.GetKeyDown("2"))
+            {
+                cc.enabled = false;
+                transform.position = new Vector3 (48,12, 119);
+                cc.enabled = true;
+            }
+            if (Input.GetKeyDown("3"))
+            {
+                cc.enabled = false;
+                transform.position = new Vector3 (-27,12,150);
+                cc.enabled = true;
+            }
+        }
     }
 }
