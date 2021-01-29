@@ -11,6 +11,6 @@ public class LevelEnd : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        MainHubData.level = 1;
+        MainHubData.level = CurrentLevel;
     }
 }
