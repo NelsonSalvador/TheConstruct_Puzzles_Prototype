@@ -15,6 +15,8 @@ public class MainHubLoader : MonoBehaviour
     [SerializeField]
     private GameObject SkipCinematicTextPannel;
     [SerializeField]
+    private GameObject CreditsConsole;
+    [SerializeField]
     private GameObject InventoryPannel;
     [SerializeField]
     private MainHubData MainHubData;
@@ -30,7 +32,13 @@ public class MainHubLoader : MonoBehaviour
     private Animator WallExplosion;
     [SerializeField]
     private GameObject Tutorial;
-    
+    [SerializeField]
+    private Interactive Orb1;
+    [SerializeField]
+    private Interactive Orb2;
+    [SerializeField]
+    private Interactive Orb3;
+
 
     // Level 1 
     [SerializeField]
@@ -94,6 +102,7 @@ public class MainHubLoader : MonoBehaviour
 
         if (MainHubData.level >= 1)
         {
+            Orb1.isActive = false;
             SkipCinematicTextPannel.SetActive(false);
             WallExplosion.SetBool("Rotate", true);
             Tutorial.SetActive(false);
@@ -111,6 +120,7 @@ public class MainHubLoader : MonoBehaviour
 
         if (MainHubData.level >= 2)
         {
+            Orb2.isActive = false;
             PortalsDoor.SetTrigger("Interact");
             Door3.SetTrigger("Interact");
             TextDoor2.color = Color.green;
@@ -120,9 +130,11 @@ public class MainHubLoader : MonoBehaviour
 
         if (MainHubData.level >= 3)
         {
+            Orb3.isActive = false;
             LabyrintsDoor.SetTrigger("Interact");
             Door4.SetTrigger("Interact");
             TextDoor3.color = Color.green;
+            CreditsConsole.SetActive(true);
         }
     }
 
