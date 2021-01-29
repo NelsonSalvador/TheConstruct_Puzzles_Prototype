@@ -3694,6 +3694,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadLevelCheats: 1
+  MainHubData: {fileID: 0}
 --- !u!4 &363106842 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 469248, guid: 3845c7234a0ed4843ba4e38e2404f54d, type: 3}
@@ -23173,6 +23174,10 @@ PrefabInstance:
       propertyPath: sceneTransition
       value: 
       objectReference: {fileID: 496062162}
+    - target: {fileID: 5014814625319773670, guid: 59c71b28bf4b14342b8a5fb599f87cc2, type: 3}
+      propertyPath: maximumUses
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59c71b28bf4b14342b8a5fb599f87cc2, type: 3}
 --- !u!4 &5834834423778656891

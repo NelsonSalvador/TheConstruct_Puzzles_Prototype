@@ -49711,6 +49711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadLevelCheats: 2
+  MainHubData: {fileID: 0}
 --- !u!82 &828653922
 AudioSource:
   m_ObjectHideFlags: 0
@@ -123269,6 +123270,10 @@ PrefabInstance:
     - target: {fileID: 5014814625319773670, guid: 59c71b28bf4b14342b8a5fb599f87cc2, type: 3}
       propertyPath: loadLevel
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5014814625319773670, guid: 59c71b28bf4b14342b8a5fb599f87cc2, type: 3}
+      propertyPath: maximumUses
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59c71b28bf4b14342b8a5fb599f87cc2, type: 3}
